@@ -13,6 +13,7 @@ private float velocidad;
 private int estamina;
 private int nivel;
 
+
     public Clase_pokemon(){
         super();
         this.nombre = "";
