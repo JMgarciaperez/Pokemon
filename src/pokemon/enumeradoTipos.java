@@ -1,5 +1,5 @@
 package pokemon;
 
-public enum enumeradoTipos {
+public enum EnumeradoTipos {
     AGUA , FUEGO , PLANTA , VOLADOR , ELECTRICO
 }
