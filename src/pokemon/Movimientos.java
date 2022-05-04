@@ -10,7 +10,7 @@ public abstract class Movimientos {
         super();
         this.nombre ="";
         this.numeroTurnos=0;
-        this.tipo = EnumeradoTipos.SIN_TIPO;
+        this.tipo = EnumeradoTipos.NORMAL;
     }
 
     public Movimientos(String nombre, int numeroTurnos, EnumeradoTipos tipo) {

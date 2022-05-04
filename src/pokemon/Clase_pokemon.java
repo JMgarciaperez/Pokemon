@@ -1,5 +1,7 @@
 package pokemon;
 
+import java.util.ArrayList;
+
 public class Clase_pokemon {
 
 private String nombre;
@@ -12,7 +14,7 @@ private int defensaEspecial;
 private float velocidad;
 private int estamina;
 private int nivel;
-
+ArrayList<Movimientos> Coleccion_mov ;
 
     public Clase_pokemon(){
         super();
