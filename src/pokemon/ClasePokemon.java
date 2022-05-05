@@ -14,7 +14,7 @@ private int defensaEspecial;
 private float velocidad;
 private int estamina;
 private int nivel;
-ArrayList<Movimientos> Coleccion_mov ;
+ArrayList<Movimientos> ColeccionMov ;
 
     public ClasePokemon(){
         super();
