@@ -1,25 +1,36 @@
 package pokemon;
 
+import java.util.ArrayList;
+
 public class Entrenador {
 
 
     private String nombre;
     private int pokeMonedas;
+    ArrayList<ClasePokemon> ColeccionCaja;
+    protected Combate combate;
+    
 
    
-  public Entrenador(String nombre, int pokeMonedas) {
+  public Entrenador(String nombre, int pokeMonedas, Combate combate) {
+      super();
         this.nombre = nombre;
         this.pokeMonedas = pokeMonedas;
+        this.combate=combate;
     }
 
     public Entrenador() {
+        super();
         this.nombre = "";
         this.pokeMonedas = 0;
+        this.combate= new Combate();
     }
 
     public Entrenador(Entrenador e) {
+        super();
         this.nombre = e.nombre;
         this.pokeMonedas = e.pokeMonedas;
+        this.combate=e.combate;
     }
 
 
@@ -47,11 +58,6 @@ public class Entrenador {
             ", pokeMonedas='" + getPokeMonedas() + "'" +
             "}";
     }
-
-
-
-
-
 
     
 }
