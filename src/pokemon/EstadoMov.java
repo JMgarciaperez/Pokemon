@@ -1,22 +1,22 @@
 package pokemon;
 
-public class Estado_mov extends Movimientos{
+public class EstadoMov extends Movimientos{
     private int potencia;
     private TiposEstados estado;
 
 
-    public Estado_mov() {
+    public EstadoMov() {
         this.potencia=0;
         this.estado= TiposEstados.SIN_ESTADO;
     }
 
 
-    public Estado_mov(int potencia, TiposEstados estado) {
+    public EstadoMov(int potencia, TiposEstados estado) {
         this.potencia = potencia;
         this.estado = estado;
     }
     
-    public Estado_mov(Estado_mov em) {
+    public EstadoMov(EstadoMov em) {
         this.potencia = em.potencia;
         this.estado = em.estado;
     }

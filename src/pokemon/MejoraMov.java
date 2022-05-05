@@ -1,20 +1,20 @@
 package pokemon;
 
-public class Mejora_mov extends Movimientos{
+public class MejoraMov extends Movimientos{
     private String mejora;
     private int cantidadMejora;
 
-    public Mejora_mov() {
+    public MejoraMov() {
         this.mejora="";
         this.cantidadMejora=0; 
     }
 
-    public Mejora_mov(String mejora, int cantidadMejora) {
+    public MejoraMov(String mejora, int cantidadMejora) {
         this.mejora = mejora;
         this.cantidadMejora = cantidadMejora;
     }
    
-    public Mejora_mov(Mejora_mov mm) {
+    public MejoraMov(MejoraMov mm) {
         this.mejora = mm.mejora;
         this.cantidadMejora = mm.cantidadMejora;
     }

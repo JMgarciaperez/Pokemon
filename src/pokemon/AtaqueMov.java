@@ -1,6 +1,6 @@
 package pokemon;
 
-public class Ataque_mov extends Movimientos{
+public class AtaqueMov extends Movimientos{
     private int potencia;
 
 
@@ -13,16 +13,16 @@ public class Ataque_mov extends Movimientos{
     }
 
 
-    public Ataque_mov() {
+    public AtaqueMov() {
         this.potencia=0;
     }
 
 
-    public Ataque_mov(int potencia) {
+    public AtaqueMov(int potencia) {
         this.potencia = potencia;
     }
 
-    public Ataque_mov(Ataque_mov am) {
+    public AtaqueMov(AtaqueMov am) {
         this.potencia = am.potencia;
     }
 
