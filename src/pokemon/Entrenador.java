@@ -9,30 +9,34 @@ public class Entrenador {
     private int pokeMonedas;
     ArrayList<ClasePokemon> ColeccionCaja;
     protected Combate combate;
-    
+    private Pokemon[] equipo; 
 
-   
-  public Entrenador(String nombre, int pokeMonedas, Combate combate) {
+
+  public Entrenador(String nombre, int pokeMonedas, Pokemon[] equipo) {
       super();
         this.nombre = nombre;
         this.pokeMonedas = pokeMonedas;
-        this.combate=combate;
+        this.equipo = equipo;
     }
 
     public Entrenador() {
         super();
         this.nombre = "";
         this.pokeMonedas = 0;
-        this.combate= new Combate();
     }
 
     public Entrenador(Entrenador e) {
         super();
         this.nombre = e.nombre;
         this.pokeMonedas = e.pokeMonedas;
-        this.combate=e.combate;
     }
 
+    public Pokemon[] getEquipo() {
+        return equipo;
+    }
+    public void  setEquipo(Pokemon[] equipo) {
+        this.equipo = equipo;
+    }
 
     public String getNombre() {
         return this.nombre;
