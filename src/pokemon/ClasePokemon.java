@@ -2,7 +2,7 @@ package pokemon;
 
 import java.util.ArrayList;
 
-public class Clase_pokemon {
+public class ClasePokemon {
 
 private String nombre;
 private String mote;
@@ -16,7 +16,7 @@ private int estamina;
 private int nivel;
 ArrayList<Movimientos> Coleccion_mov ;
 
-    public Clase_pokemon(){
+    public ClasePokemon(){
         super();
         this.nombre = "";
         this.mote = "";
@@ -30,7 +30,7 @@ ArrayList<Movimientos> Coleccion_mov ;
         this.nivel = 1;
     }
     
-    public Clase_pokemon(String nombre, String mote, int vitalidad, int ataque, int defensa, int ataqueEspecial, int defensaEspecial, float velocidad, int estamina, int nivel) {
+    public ClasePokemon(String nombre, String mote, int vitalidad, int ataque, int defensa, int ataqueEspecial, int defensaEspecial, float velocidad, int estamina, int nivel) {
         super();
         this.nombre = nombre;
         this.mote = mote;
@@ -44,7 +44,7 @@ ArrayList<Movimientos> Coleccion_mov ;
         this.nivel = nivel;
     }
 
-    public Clase_pokemon(Clase_pokemon cp){
+    public ClasePokemon(ClasePokemon cp){
         super();
         this.nombre = cp.nombre;
         this.mote = cp.mote;
