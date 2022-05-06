@@ -6,10 +6,10 @@ public class Combate {
         protected String nombreRival;
         protected int koEntrenador;
         protected int koRival;
-        protected Turno turno;
+        protected Turno[] turno;
 
 
-    public Combate(String nombreRival, int koEntrenador, int koRival,Turno turno) {
+    public Combate(String nombreRival, int koEntrenador, int koRival,Turno[] turno) {
         super();
         this.nombreRival = nombreRival;
         this.koEntrenador = koEntrenador;
@@ -22,7 +22,7 @@ public class Combate {
         this.nombreRival = "";
         this.koEntrenador = 0;
         this.koRival = 0;
-        this.turno = new Turno();
+        
     }
 
     public Combate(Combate c) {
@@ -30,11 +30,8 @@ public class Combate {
         this.nombreRival = c.nombreRival;
         this.koEntrenador = c.koEntrenador;
         this.koRival = c.koRival;
-        this.turno = c.turno;
+        
     }
-
-
-
 
     public String getNombreRival() {
         return this.nombreRival;
@@ -60,14 +57,13 @@ public class Combate {
         this.koRival = koRival;
     }
 
-    public Turno getTurno() {
+    public Turno[] getTurno() {
         return this.turno;
     }
 
-    public void setTurno(Turno turno) {
+    public void setTurno(Turno[] turno) {
         this.turno = turno;
     }
-
 
     @Override
     public String toString() {
@@ -78,4 +74,5 @@ public class Combate {
             ", turno='" + getTurno() + "'" +
             "}";
     }
+ 
 }
