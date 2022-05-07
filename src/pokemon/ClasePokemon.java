@@ -14,7 +14,7 @@ private int defensaEspecial;
 private float velocidad;
 private int estamina;
 private int nivel;
-ArrayList<Movimientos> Coleccion_mov ;
+private int experiencia;
 
     public ClasePokemon(){
         super();
@@ -138,6 +138,13 @@ ArrayList<Movimientos> Coleccion_mov ;
         this.nivel = nivel;
     }
 
+    public int getExperiencia() {
+        return this.experiencia;
+    }
+
+    public void setExperiencia(int experiencia) {
+        this.experiencia = experiencia;
+    }
 
     @Override
     public String toString() {
@@ -155,4 +162,24 @@ ArrayList<Movimientos> Coleccion_mov ;
             "}";
     }
 
+    public void Ataque() {
+        vitalidad -=ataque;
+    }
+
+    public boolean subirNivel() {
+        boolean resultado=false;
+        if(this.experiencia == 10*nivel){
+            this.experiencia-=(10*nivel);
+            nivel++;
+            this.vitalidad=(int) (this.vitalidad+(Math.random()* 5+1));
+            this.ataque=(int) (this.ataque+(Math.random()* 5+1));
+            this.defensa=(int) (this.defensa+(Math.random()* 5+1));
+            this.ataqueEspecial=(int) (this.ataqueEspecial+(Math.random()* 5+1));
+            this.defensaEspecial=(int) (this.defensaEspecial+(Math.random()* 5+1));
+            resultado=true;
+        }
+        return false;
+    }
+    
+    
 }

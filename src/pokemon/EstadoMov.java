@@ -1,7 +1,7 @@
 package pokemon;
 
 public class EstadoMov extends Movimientos{
-    private int potencia;
+    protected int potencia;
     private TiposEstados estado;
 
 
