@@ -16,8 +16,6 @@ private int estamina;
 private int nivel;
 ArrayList<Movimientos> ColeccionMov ;
 
-    
-
     public ClasePokemon(){
         super();
         this.nombre = "";
@@ -30,6 +28,7 @@ ArrayList<Movimientos> ColeccionMov ;
         this.velocidad = 0;
         this.estamina = 0;
         this.nivel = 1;
+        this.ColeccionMov = new ArrayList<Movimientos>();
     }
     
     public ClasePokemon(String nombre, String mote, int vitalidad, int ataque, int defensa, int ataqueEspecial, 
@@ -141,6 +140,14 @@ ArrayList<Movimientos> ColeccionMov ;
 
     public void setNivel(int nivel) {
         this.nivel = nivel;
+    }
+
+    public ArrayList<Movimientos> getColeccionMov() {
+        return this.ColeccionMov;
+    }
+
+    public void setColeccionMov(ArrayList<Movimientos> ColeccionMov) {
+        this.ColeccionMov = ColeccionMov;
     }
 
 
