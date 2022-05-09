@@ -150,20 +150,12 @@ ArrayList<Movimientos> ColeccionMov;
         this.experiencia = experiencia;
     }
 
-    @Override
-    public String toString() {
-        return "{" +
-            " nombre=" + getNombre() + "" +
-            ", mote=" + getMote() + "" +
-            ", vitalidad=" + getVitalidad() + "" +
-            ", ataque=" + getAtaque() + "" +
-            ", defensa=" + getDefensa() + "" +
-            ", ataqueEspecial=" + getAtaqueEspecial() + "" +
-            ", defensaEspecial=" + getDefensaEspecial() + "" +
-            ", velocidad=" + getVelocidad() + "" +
-            ", estamina=" + getEstamina() + "" +
-            ", nivel=" + getNivel() + "" +
-            "}";
+    public ArrayList<Movimientos> getColeccionMov() {
+        return this.ColeccionMov;
+    }
+
+    public void setColeccionMov(ArrayList<Movimientos> ColeccionMov) {
+        this.ColeccionMov = ColeccionMov;
     }
 
     public void Ataque() {
@@ -185,5 +177,20 @@ ArrayList<Movimientos> ColeccionMov;
         return false;
     }
     
+    @Override
+    public String toString() {
+        return "{" +
+            " nombre=" + getNombre() + "" +
+            ", mote=" + getMote() + "" +
+            ", vitalidad=" + getVitalidad() + "" +
+            ", ataque=" + getAtaque() + "" +
+            ", defensa=" + getDefensa() + "" +
+            ", ataqueEspecial=" + getAtaqueEspecial() + "" +
+            ", defensaEspecial=" + getDefensaEspecial() + "" +
+            ", velocidad=" + getVelocidad() + "" +
+            ", estamina=" + getEstamina() + "" +
+            ", nivel=" + getNivel() + "" +
+            "}";
+    }
     
 }
