@@ -16,6 +16,7 @@ private int estamina;
 private int nivel;
 private int experiencia;
 ArrayList<Movimientos> ColeccionMov;
+
     public ClasePokemon(){
         super();
         this.nombre = "";
@@ -158,10 +159,6 @@ ArrayList<Movimientos> ColeccionMov;
         this.ColeccionMov = ColeccionMov;
     }
 
-    public void Ataque() {
-        vitalidad -=ataque;
-    }
-
     public boolean subirNivel() {
         boolean resultado=false;
         if(this.experiencia == 10*nivel){
@@ -177,6 +174,28 @@ ArrayList<Movimientos> ColeccionMov;
         return false;
     }
     
+    public boolean descansar() {
+        
+        return false;
+    }
+
+    public void ataque(){
+
+    }
+
+    public boolean ventajaDesventaja() {
+        
+        return false;
+    }
+
+
+
+
+
+
+
+
+
     @Override
     public String toString() {
         return "{" +

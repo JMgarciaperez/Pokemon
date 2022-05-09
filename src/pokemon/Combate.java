@@ -65,6 +65,36 @@ public class Combate {
         this.turno = turno;
     }
 
+    public boolean combatir(){
+        
+        return false;
+    }
+
+    public boolean retirarse(){
+        
+        return false;
+    }
+
+    public boolean experienciaObtenida(){
+        
+        return false;
+    }
+
+    public boolean generarRivalAleatorio(){
+        
+        return false;
+    }
+
+    public boolean obtenerPokeMoneda(){
+        
+        return false;
+    }
+
+    public boolean primeroEnAtacar(){
+        
+        return false;
+    }
+
     @Override
     public String toString() {
         return "{" +

@@ -63,6 +63,25 @@ public class Entrenador {
         this.pokeMonedas = pokeMonedas;
     }
 
+    public boolean moverPokemonEquipo(){
+        
+        return false;
+    }
+
+    public boolean moverPokemonCaja(){
+        
+        return false;
+    }
+
+    public boolean entrenarPokemon(){
+        
+        return false;
+    }
+
+    public boolean capturarPokemon(){
+        
+        return false;
+    }
 
     @Override
     public String toString() {
