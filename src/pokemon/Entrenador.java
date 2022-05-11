@@ -9,11 +9,11 @@ public class Entrenador {
     private int pokeMonedas;
     ArrayList<ClasePokemon> ColeccionCaja;
     protected Combate combate;
-    private ClaseMain[] equipo; 
-    protected ClaseMain[] equipoSecundario;
+    private ClasePokemon[] equipo; 
+    protected ClasePokemon[] equipoSecundario;
 
 
-  public Entrenador(String nombre, int pokeMonedas, ClaseMain[] equipo,ClaseMain[] equipoSecundario) {
+  public Entrenador(String nombre, int pokeMonedas, ClasePokemon[] equipo, ClasePokemon[] equipoSecundario) {
       super();
         this.nombre = nombre;
         this.pokeMonedas = pokeMonedas;
@@ -33,17 +33,17 @@ public class Entrenador {
         this.pokeMonedas = e.pokeMonedas;
     }
 
-    public ClaseMain[] getEquipo() {
+    public ClasePokemon[] getEquipo() {
         return equipo;
     }
-    public void  setEquipo(ClaseMain[] equipo) {
+    public void  setEquipo(ClasePokemon[] equipo) {
         this.equipo = equipo;
     }
 
-    public ClaseMain[] getEquipoSecundario() {
+    public ClasePokemon[] getEquipoSecundario() {
         return equipoSecundario;
     }
-    public void  setEquipoSecundario(ClaseMain[] equipoSecundario) {
+    public void  setEquipoSecundario(ClasePokemon[] equipoSecundario) {
         this.equipo = equipoSecundario;
     }
 
