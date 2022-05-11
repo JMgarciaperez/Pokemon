@@ -3,7 +3,6 @@ package pokemon;
 public class Combate {
 
 
-        private static final Object[] Array = null;
         protected String nombreRival;
         protected int koEntrenador;
         protected int koRival;
