@@ -1,7 +1,6 @@
 package pokemon;
 
 import java.sql.*;
-import javax.sql.*;
 
 public class ClaseMain {
     
