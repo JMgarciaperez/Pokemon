@@ -10,7 +10,8 @@ public class ClaseMain {
         String url="jdbc:mysql://localhost:3306/pokemones";
         String login="root";
         String pass="";
- 
+
+        
         try{
  
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -31,4 +32,19 @@ public class ClaseMain {
             e.printStackTrace();
         }
     }
+
+
+    ClasePokemon.generarPokemonAleatorio(nombre);
+ 
+
+
+
+
+
+
+
+
+
+
+
 }

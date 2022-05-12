@@ -1,26 +1,29 @@
 package pokemon;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class ClasePokemon {
 
-private String nombre;
-private String mote;
-private int vitalidad;
-private int ataque;
-private int defensa;
-private int ataqueEspecial;
-private int defensaEspecial;
-private float velocidad;
-private int estamina;
-private int nivel;
-private double experiencia;
-private EnumeradoTipos tipo1;
-private EnumeradoTipos tipo2;
-ArrayList<Movimientos> ColeccionMov;
+    private String nombre;
+    private String mote;
+    private int vitalidad;
+    private int ataque;
+    private int defensa;
+    private int ataqueEspecial;
+    private int defensaEspecial;
+    private float velocidad;
+    private int estamina;
+    private int nivel;
+    private double experiencia;
+    private EnumeradoTipos tipo1;
+    private EnumeradoTipos tipo2;
+    private ArrayList<Movimientos> ColeccionMov;
+    private static ArrayList<String> nombresPokemon = new ArrayList<>();
 
-ClasePokemon pokemonEntrenador = new ClasePokemon();
-ClasePokemon pokemonRival = new ClasePokemon();
+    // TODO: Esto se hace en un main o fuera de la clase
+    ClasePokemon pokemonEntrenador = new ClasePokemon();
+    ClasePokemon pokemonRival = new ClasePokemon();
 
     public ClasePokemon(){
         super();
@@ -39,6 +42,8 @@ ClasePokemon pokemonRival = new ClasePokemon();
         this.tipo2 = EnumeradoTipos.NORMAL;
         this.ColeccionMov = new ArrayList<Movimientos>();
     }
+
+    
     
     public ClasePokemon(String nombre, String mote, int vitalidad, int ataque, int defensa, int ataqueEspecial, 
                         int defensaEspecial, float velocidad, int estamina, int nivel, double experiencia , 
@@ -77,6 +82,7 @@ ClasePokemon pokemonRival = new ClasePokemon();
         this.tipo2 = cp.tipo2;
         this.ColeccionMov = cp.ColeccionMov;
     }
+
 
     public String getNombre() {
         return this.nombre;
@@ -442,7 +448,29 @@ ClasePokemon pokemonRival = new ClasePokemon();
         }
         return false;
     }
+   
+    public static void inicializarListaNombres(ArrayList<String> paramNombresPokemon){
+        nombresPokemon = paramNombresPokemon;
+    }
 
+    public static ClasePokemon generarPokemonAleatorio(String nombre){
+        Random rnd = new Random();
+        ClasePokemon nuevoPokemon = new ClasePokemon();
+        nuevoPokemon.setNivel(1);
+        nuevoPokemon.set(rnd.nextInt(5)+1);
+        nuevoPokemon.setVitalidad(rnd.nextInt(5)+1);
+        nuevoPokemon.setAtaque(rnd.nextInt(5)+1);
+        nuevoPokemon.setDefensa(rnd.nextInt(5)+1);
+        nuevoPokemon.setAtaqueEspecial(rnd.nextInt(5)+1);
+        nuevoPokemon.setDefensaEspecial(rnd.nextInt(5)+1);
+        nuevoPokemon.setVelocidad(rnd.nextInt(5)+1);
+        nuevoPokemon.setEstamina(rnd.nextInt(5)+1);
+        nuevoPokemon.setColeccionMov(rnd.nextInt(5)+1);
+        nuevoPokemon.setTipo1(rnd.nextInt(5)+1);
+        nuevoPokemon.setTipo2(rnd.nextInt(5)+1);
+        nuevoPokemon.setNombre(nombresPokemon.get(rnd.nextInt(nombresPokemon.size() -1));
+        return nuevoPokemon;
+    }
 
     @Override
     public String toString() {

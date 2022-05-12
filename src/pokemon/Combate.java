@@ -85,20 +85,11 @@ public class Combate {
         return false;
     }
 	public static void generarPokemonsEnemigo() {
-    /**
-	 * Genera los 4 pokemons del enemigo de forma aleatoria
-	 */
-    int aleatorio=0;
+    
+	
 
-    aleatorio=(int) (Math.random()* 1000);
-
-    
-
-    
-    
-    
-        
      }
+
     
     public boolean obtenerPokeMoneda(){
         
