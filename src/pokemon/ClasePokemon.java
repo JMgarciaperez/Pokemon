@@ -168,7 +168,7 @@ public class ClasePokemon {
         return this.experiencia;
     }
 
-    public void setExperiencia(int experiencia) {
+    public void setExperiencia(double experiencia) {
         this.experiencia = experiencia;
     }
 
@@ -468,8 +468,15 @@ public class ClasePokemon {
         nuevoPokemon.setColeccionMov(rnd.nextInt(5)+1);
         nuevoPokemon.setTipo1(rnd.nextInt(5)+1);
         nuevoPokemon.setTipo2(rnd.nextInt(5)+1);
-        nuevoPokemon.setNombre(nombresPokemon.get(rnd.nextInt(nombresPokemon.size() -1));
+        nuevoPokemon.setNombre(nombresPokemon.get(rnd.nextInt(nombresPokemon.size() -1)));
         return nuevoPokemon;
+    }
+
+    public void experienciaTrasCombate(double experienciaTengo){
+
+        if ((pokemonEntrenador.vitalidad>0)&&(pokemonRival.vitalidad==0))
+        experienciaTengo = getExperiencia();
+        pokemonEntrenador.setExperiencia(experienciaTengo+((pokemonEntrenador.nivel + pokemonRival.nivel)*10)/4);
     }
 
     @Override
