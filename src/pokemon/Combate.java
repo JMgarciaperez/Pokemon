@@ -1,20 +1,28 @@
 package pokemon;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
+
 public class Combate {
 
 
         protected String nombreRival;
         protected int koEntrenador;
         protected int koRival;
-        protected Turno[] turno;
+        protected List<Turno> turnos;
+        public static final String PATH = "./log/combate.log";
 
 
-    public Combate(String nombreRival, int koEntrenador, int koRival,Turno[] turno) {
+    public Combate(String nombreRival, int koEntrenador, int koRival) {
         super();
         this.nombreRival = nombreRival;
         this.koEntrenador = koEntrenador;
         this.koRival = koRival;
-        this.turno = turno;
+
     }
 
     public Combate() {
@@ -22,7 +30,7 @@ public class Combate {
         this.nombreRival = "";
         this.koEntrenador = 0;
         this.koRival = 0;
-        
+        this.turnos = new LinkedList<>();
     }
 
     public Combate(Combate c) {
@@ -57,12 +65,28 @@ public class Combate {
         this.koRival = koRival;
     }
 
-    public Turno[] getTurno() {
-        return this.turno;
+    public void addTurnos(Turno t){
+        this.turnos.add(t);
+
     }
 
-    public void setTurno(Turno[] turno) {
-        this.turno = turno;
+    public void escribirFichero(){
+
+        File fichero = new File(PATH);
+        try {
+            FileWriter fw = new FileWriter(fichero);
+            BufferedWriter bw = new BufferedWriter(fw);
+
+           for (Turno turno : turnos) {
+                bw.write("Turno " + turno.getNumeroTurno() + ": \n");
+                bw.write("Entrenador: " + turno.getNombreAtaqueEntrenador() + "\n");
+                bw.write("Rival: " + turno.getNombreAtaqueRival() + "\n");
+           }
+
+           bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public boolean combatir(){
@@ -84,13 +108,11 @@ public class Combate {
         
         return false;
     }
+
 	public static void generarPokemonsEnemigo() {
-    
-	
 
      }
 
-    
     public boolean obtenerPokeMoneda(){
         
         return false;
@@ -100,15 +122,4 @@ public class Combate {
         
         return false;
     }
-
-    @Override
-    public String toString() {
-        return "{" +
-            " nombreRival='" + getNombreRival() + "'" +
-            ", koEntrenador='" + getKoEntrenador() + "'" +
-            ", koRival='" + getKoRival() + "'" +
-            ", turno='" + getTurno() + "'" +
-            "}";
-    }
- 
 }

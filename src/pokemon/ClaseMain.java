@@ -31,13 +31,19 @@ public class ClaseMain {
         }catch(SQLException e){
             e.printStackTrace();
         }
+
+        Combate c = new Combate();
+
+        Turno t1 = new Turno(1,
+        "ECharmander usa Ascuas",
+        "Squirtel usa Burbujas");
+
+        c.addTurnos(t1);
+        c.escribirFichero();
     }
-
-
-    ClasePokemon.generarPokemonAleatorio(nombre);
  
 
-
+    ClasePokemon.generarPokemonAleatorio(nombre);
 
 
 
