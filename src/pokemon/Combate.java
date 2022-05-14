@@ -118,8 +118,4 @@ public class Combate {
         return false;
     }
 
-    public boolean primeroEnAtacar(){
-        
-        return false;
-    }
 }

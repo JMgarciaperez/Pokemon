@@ -1,7 +1,7 @@
 package pokemon;
 
 public class AtaqueMov extends Movimientos{
-    private int potencia;
+    protected int potencia;
 
 
     public int getPotencia() {

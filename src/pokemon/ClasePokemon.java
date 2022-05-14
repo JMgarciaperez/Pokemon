@@ -21,9 +21,13 @@ public class ClasePokemon {
     private ArrayList<Movimientos> ColeccionMov;
     private static ArrayList<String> nombresPokemon = new ArrayList<>();
 
+
+    private static final double VENTAJA = 2;
+    private static final double DESVENTAJA = 0.5;
+    private static final double NEUTRO = 1;
     // TODO: Esto se hace en un main o fuera de la clase
-    ClasePokemon pokemonEntrenador = new ClasePokemon();
-    ClasePokemon pokemonRival = new ClasePokemon();
+    // ClasePokemon pokemonEntrenador = new ClasePokemon();
+    // ClasePokemon pokemonRival = new ClasePokemon();
 
     public ClasePokemon(){
         super();
@@ -196,11 +200,10 @@ public class ClasePokemon {
         this.tipo2 = EnumeradoTipos.NORMAL;
     }
 
-    public void experienciaTrasCombate(double experienciaTengo){
+    public void experienciaTrasCombate(ClasePokemon pokemonEntrenador ,ClasePokemon pokemonRival){
 
         if ((pokemonEntrenador.vitalidad>0)&&(pokemonRival.vitalidad==0))
-        experienciaTengo = getExperiencia();
-        pokemonEntrenador.setExperiencia(experienciaTengo+((pokemonEntrenador.nivel + pokemonRival.nivel)*10)/4);
+        pokemonEntrenador.setExperiencia( pokemonEntrenador.getExperiencia()+((pokemonEntrenador.nivel + pokemonRival.nivel)*10)/4);
     }
 
     public boolean subirNivel() {
@@ -223,259 +226,94 @@ public class ClasePokemon {
         return false;
     }
 
-    public boolean ventajaDesventaja() {
-        boolean resultado=false;
-        if(pokemonEntrenador.tipo1 == EnumeradoTipos.AGUA && pokemonRival.tipo1 == EnumeradoTipos.FUEGO || pokemonRival.tipo1 == EnumeradoTipos.TIERRA){
-            pokemonEntrenador.ataque *= 2;
-            resultado = true;
+    public double ventajaDesventaja(EnumeradoTipos tip1, EnumeradoTipos tip2) {
+    
+        if(tip1 == EnumeradoTipos.AGUA && tip2 == EnumeradoTipos.FUEGO || tip2 == EnumeradoTipos.TIERRA){
+            return VENTAJA;
 
-        }else if(pokemonEntrenador.tipo1 == EnumeradoTipos.AGUA && pokemonRival.tipo1 == EnumeradoTipos.PLANTA || pokemonRival.tipo1 == EnumeradoTipos.ELECTRICO){
-            pokemonEntrenador.ataque *= 0.5;
-            resultado = true;
+        }else if(tip1 == EnumeradoTipos.AGUA && tip2 == EnumeradoTipos.PLANTA || tip2 == EnumeradoTipos.ELECTRICO){
+            return DESVENTAJA;
 
-        }else if(pokemonEntrenador.tipo1 == EnumeradoTipos.FUEGO && pokemonRival.tipo1 == EnumeradoTipos.PLANTA || pokemonRival.tipo1 == EnumeradoTipos.BICHO){
-            pokemonEntrenador.ataque *= 2;
-            resultado = true;
+        }else if(tip1 == EnumeradoTipos.FUEGO && tip2 == EnumeradoTipos.PLANTA || tip2 == EnumeradoTipos.BICHO){
+            return VENTAJA;
 
-        }else if(pokemonEntrenador.tipo1 == EnumeradoTipos.FUEGO && pokemonRival.tipo1 == EnumeradoTipos.TIERRA || pokemonRival.tipo1 == EnumeradoTipos.AGUA){
-            pokemonEntrenador.ataque *= 0.5;
-            resultado = true;
+        }else if(tip1 == EnumeradoTipos.FUEGO && tip2 == EnumeradoTipos.TIERRA || tip2 == EnumeradoTipos.AGUA){
+            return DESVENTAJA;
 
-        }else if(pokemonEntrenador.tipo1 == EnumeradoTipos.PLANTA && pokemonRival.tipo1 == EnumeradoTipos.TIERRA || pokemonRival.tipo1 == EnumeradoTipos.AGUA){
-            pokemonEntrenador.ataque *= 2;
-            resultado = true;
+        }else if(tip1 == EnumeradoTipos.PLANTA && tip2 == EnumeradoTipos.TIERRA || tip2 == EnumeradoTipos.AGUA){
+            return VENTAJA;
 
-        }else if(pokemonEntrenador.tipo1 == EnumeradoTipos.PLANTA && pokemonRival.tipo1 == EnumeradoTipos.FUEGO || pokemonRival.tipo1 == EnumeradoTipos.BICHO){
-            pokemonEntrenador.ataque *= 0.5;
-            resultado = true;
+        }else if(tip1 == EnumeradoTipos.PLANTA && tip2 == EnumeradoTipos.FUEGO || tip2 == EnumeradoTipos.BICHO){
+            return DESVENTAJA;
 
-        }else if(pokemonEntrenador.tipo1 == EnumeradoTipos.BICHO && pokemonRival.tipo1 == EnumeradoTipos.PLANTA || pokemonRival.tipo1 == EnumeradoTipos.AGUA){
-            pokemonEntrenador.ataque *= 2;
-            resultado = true;
+        }else if(tip1 == EnumeradoTipos.BICHO && tip2 == EnumeradoTipos.PLANTA || tip2 == EnumeradoTipos.AGUA){
+            return VENTAJA;
 
-        }else if(pokemonEntrenador.tipo1 == EnumeradoTipos.BICHO && pokemonRival.tipo1 == EnumeradoTipos.FUEGO|| pokemonRival.tipo1 == EnumeradoTipos.VOLADOR){
-            pokemonEntrenador.ataque *= 0.5;
-            resultado = true;
+        }else if(tip1 == EnumeradoTipos.BICHO && tip2 == EnumeradoTipos.FUEGO|| tip2 == EnumeradoTipos.VOLADOR){
+            return DESVENTAJA;
 
-        }else if(pokemonEntrenador.tipo1 == EnumeradoTipos.VOLADOR && pokemonRival.tipo1 == EnumeradoTipos.PLANTA || pokemonRival.tipo1 == EnumeradoTipos.BICHO){
-            pokemonEntrenador.ataque *= 2;
-            resultado = true;
+        }else if(tip1== EnumeradoTipos.VOLADOR && tip2 == EnumeradoTipos.PLANTA || tip2 == EnumeradoTipos.BICHO){
+            return VENTAJA;
 
-        }else if(pokemonEntrenador.tipo1 == EnumeradoTipos.VOLADOR && pokemonRival.tipo1 == EnumeradoTipos.ELECTRICO || pokemonRival.tipo1 == EnumeradoTipos.TIERRA){
-            pokemonEntrenador.ataque *= 0.5;
-            resultado = true;
+        }else if(tip1== EnumeradoTipos.VOLADOR && tip2 == EnumeradoTipos.ELECTRICO || tip2 == EnumeradoTipos.TIERRA){
+            return DESVENTAJA;
 
-        }else if(pokemonEntrenador.tipo1 == EnumeradoTipos.ELECTRICO && pokemonRival.tipo1 == EnumeradoTipos.VOLADOR || pokemonRival.tipo1 == EnumeradoTipos.AGUA){
-            pokemonEntrenador.ataque *= 2;
-            resultado = true;
+        }else if(tip1== EnumeradoTipos.ELECTRICO && tip2 == EnumeradoTipos.VOLADOR || tip2 == EnumeradoTipos.AGUA){
+            return VENTAJA;
 
-        }else if(pokemonEntrenador.tipo1 == EnumeradoTipos.ELECTRICO && pokemonRival.tipo1 == EnumeradoTipos.TIERRA || pokemonRival.tipo1 == EnumeradoTipos.PLANTA){
-            pokemonEntrenador.ataque *= 0.5;
-            resultado = true;
+        }else if(tip1== EnumeradoTipos.ELECTRICO && tip2 == EnumeradoTipos.TIERRA || tip2 == EnumeradoTipos.PLANTA){
+            return DESVENTAJA;
 
-        }else if(pokemonEntrenador.tipo1 == EnumeradoTipos.TIERRA && pokemonRival.tipo1 == EnumeradoTipos.FUEGO || pokemonRival.tipo1 == EnumeradoTipos.ELECTRICO){
-            pokemonEntrenador.ataque *= 2;
-            resultado = true;
+        }else if(tip1== EnumeradoTipos.TIERRA && tip2 == EnumeradoTipos.FUEGO || tip2 == EnumeradoTipos.ELECTRICO){
+            return VENTAJA;
 
-        }else if(pokemonEntrenador.tipo1 == EnumeradoTipos.TIERRA && pokemonRival.tipo1 == EnumeradoTipos.AGUA || pokemonRival.tipo1 == EnumeradoTipos.PLANTA){
-            pokemonEntrenador.ataque *= 0.5;
-            resultado = true;
+        }else if(tip1== EnumeradoTipos.TIERRA && tip2 == EnumeradoTipos.AGUA || tip2 == EnumeradoTipos.PLANTA){
+            return DESVENTAJA;
 
-        }else if(pokemonEntrenador.tipo1 == EnumeradoTipos.AGUA && pokemonRival.tipo2 == EnumeradoTipos.FUEGO || pokemonRival.tipo2 == EnumeradoTipos.TIERRA){
-            pokemonEntrenador.ataque *= 2;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo1 == EnumeradoTipos.AGUA && pokemonRival.tipo2 == EnumeradoTipos.PLANTA || pokemonRival.tipo2 == EnumeradoTipos.ELECTRICO){
-            pokemonEntrenador.ataque *= 0.5;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo1 == EnumeradoTipos.FUEGO && pokemonRival.tipo2 == EnumeradoTipos.PLANTA || pokemonRival.tipo2 == EnumeradoTipos.BICHO){
-            pokemonEntrenador.ataque *= 2;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo1 == EnumeradoTipos.FUEGO && pokemonRival.tipo2 == EnumeradoTipos.TIERRA || pokemonRival.tipo2 == EnumeradoTipos.AGUA){
-            pokemonEntrenador.ataque *= 0.5;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo1 == EnumeradoTipos.PLANTA && pokemonRival.tipo2 == EnumeradoTipos.TIERRA || pokemonRival.tipo2 == EnumeradoTipos.AGUA){
-            pokemonEntrenador.ataque *= 2;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo1 == EnumeradoTipos.PLANTA && pokemonRival.tipo2 == EnumeradoTipos.FUEGO || pokemonRival.tipo2 == EnumeradoTipos.BICHO){
-            pokemonEntrenador.ataque *= 0.5;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo1 == EnumeradoTipos.BICHO && pokemonRival.tipo2 == EnumeradoTipos.PLANTA || pokemonRival.tipo2 == EnumeradoTipos.AGUA){
-            pokemonEntrenador.ataque *= 2;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo1 == EnumeradoTipos.BICHO && pokemonRival.tipo2 == EnumeradoTipos.FUEGO|| pokemonRival.tipo2 == EnumeradoTipos.VOLADOR){
-            pokemonEntrenador.ataque *= 0.5;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo1 == EnumeradoTipos.VOLADOR && pokemonRival.tipo2 == EnumeradoTipos.PLANTA || pokemonRival.tipo2 == EnumeradoTipos.BICHO){
-            pokemonEntrenador.ataque *= 2;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo1 == EnumeradoTipos.VOLADOR && pokemonRival.tipo2 == EnumeradoTipos.ELECTRICO || pokemonRival.tipo2 == EnumeradoTipos.TIERRA){
-            pokemonEntrenador.ataque *= 0.5;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo1 == EnumeradoTipos.ELECTRICO && pokemonRival.tipo2 == EnumeradoTipos.VOLADOR || pokemonRival.tipo2 == EnumeradoTipos.AGUA){
-            pokemonEntrenador.ataque *= 2;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo1 == EnumeradoTipos.ELECTRICO && pokemonRival.tipo2 == EnumeradoTipos.TIERRA || pokemonRival.tipo2 == EnumeradoTipos.PLANTA){
-            pokemonEntrenador.ataque *= 0.5;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo1 == EnumeradoTipos.TIERRA && pokemonRival.tipo2 == EnumeradoTipos.FUEGO || pokemonRival.tipo2 == EnumeradoTipos.ELECTRICO){
-            pokemonEntrenador.ataque *= 2;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo1 == EnumeradoTipos.TIERRA && pokemonRival.tipo2 == EnumeradoTipos.AGUA || pokemonRival.tipo2 == EnumeradoTipos.PLANTA){
-            pokemonEntrenador.ataque *= 0.5;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo2 == EnumeradoTipos.AGUA && pokemonRival.tipo1 == EnumeradoTipos.FUEGO || pokemonRival.tipo1 == EnumeradoTipos.TIERRA){
-            pokemonEntrenador.ataque *= 2;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo2 == EnumeradoTipos.AGUA && pokemonRival.tipo1 == EnumeradoTipos.PLANTA || pokemonRival.tipo1 == EnumeradoTipos.ELECTRICO){
-            pokemonEntrenador.ataque *= 0.5;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo2 == EnumeradoTipos.FUEGO && pokemonRival.tipo1 == EnumeradoTipos.PLANTA || pokemonRival.tipo1 == EnumeradoTipos.BICHO){
-            pokemonEntrenador.ataque *= 2;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo2 == EnumeradoTipos.FUEGO && pokemonRival.tipo1 == EnumeradoTipos.TIERRA || pokemonRival.tipo1 == EnumeradoTipos.AGUA){
-            pokemonEntrenador.ataque *= 0.5;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo2 == EnumeradoTipos.PLANTA && pokemonRival.tipo1 == EnumeradoTipos.TIERRA || pokemonRival.tipo1 == EnumeradoTipos.AGUA){
-            pokemonEntrenador.ataque *= 2;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo2 == EnumeradoTipos.PLANTA && pokemonRival.tipo1 == EnumeradoTipos.FUEGO || pokemonRival.tipo1 == EnumeradoTipos.BICHO){
-            pokemonEntrenador.ataque *= 0.5;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo2 == EnumeradoTipos.BICHO && pokemonRival.tipo1 == EnumeradoTipos.PLANTA || pokemonRival.tipo1 == EnumeradoTipos.AGUA){
-            pokemonEntrenador.ataque *= 2;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo2 == EnumeradoTipos.BICHO && pokemonRival.tipo1 == EnumeradoTipos.FUEGO|| pokemonRival.tipo1 == EnumeradoTipos.VOLADOR){
-            pokemonEntrenador.ataque *= 0.5;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo2 == EnumeradoTipos.VOLADOR && pokemonRival.tipo1 == EnumeradoTipos.PLANTA || pokemonRival.tipo1 == EnumeradoTipos.BICHO){
-            pokemonEntrenador.ataque *= 2;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo2 == EnumeradoTipos.VOLADOR && pokemonRival.tipo1 == EnumeradoTipos.ELECTRICO || pokemonRival.tipo1 == EnumeradoTipos.TIERRA){
-            pokemonEntrenador.ataque *= 0.5;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo2 == EnumeradoTipos.ELECTRICO && pokemonRival.tipo1 == EnumeradoTipos.VOLADOR || pokemonRival.tipo1 == EnumeradoTipos.AGUA){
-            pokemonEntrenador.ataque *= 2;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo2 == EnumeradoTipos.ELECTRICO && pokemonRival.tipo1 == EnumeradoTipos.TIERRA || pokemonRival.tipo1 == EnumeradoTipos.PLANTA){
-            pokemonEntrenador.ataque *= 0.5;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo2 == EnumeradoTipos.TIERRA && pokemonRival.tipo1 == EnumeradoTipos.FUEGO || pokemonRival.tipo1 == EnumeradoTipos.ELECTRICO){
-            pokemonEntrenador.ataque *= 2;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo2 == EnumeradoTipos.TIERRA && pokemonRival.tipo1 == EnumeradoTipos.AGUA || pokemonRival.tipo1 == EnumeradoTipos.PLANTA){
-            pokemonEntrenador.ataque *= 0.5;
-            resultado = true;
-        
-        }else if(pokemonEntrenador.tipo2 == EnumeradoTipos.AGUA && pokemonRival.tipo2 == EnumeradoTipos.FUEGO || pokemonRival.tipo2 == EnumeradoTipos.TIERRA){
-            pokemonEntrenador.ataque *= 2;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo2 == EnumeradoTipos.AGUA && pokemonRival.tipo2 == EnumeradoTipos.PLANTA || pokemonRival.tipo2 == EnumeradoTipos.ELECTRICO){
-            pokemonEntrenador.ataque *= 0.5;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo2 == EnumeradoTipos.FUEGO && pokemonRival.tipo2 == EnumeradoTipos.PLANTA || pokemonRival.tipo2 == EnumeradoTipos.BICHO){
-            pokemonEntrenador.ataque *= 2;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo2 == EnumeradoTipos.FUEGO && pokemonRival.tipo2 == EnumeradoTipos.TIERRA || pokemonRival.tipo2 == EnumeradoTipos.AGUA){
-            pokemonEntrenador.ataque *= 0.5;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo2 == EnumeradoTipos.PLANTA && pokemonRival.tipo2 == EnumeradoTipos.TIERRA || pokemonRival.tipo2 == EnumeradoTipos.AGUA){
-            pokemonEntrenador.ataque *= 2;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo2 == EnumeradoTipos.PLANTA && pokemonRival.tipo2 == EnumeradoTipos.FUEGO || pokemonRival.tipo2 == EnumeradoTipos.BICHO){
-            pokemonEntrenador.ataque *= 0.5;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo2 == EnumeradoTipos.BICHO && pokemonRival.tipo2 == EnumeradoTipos.PLANTA || pokemonRival.tipo2 == EnumeradoTipos.AGUA){
-            pokemonEntrenador.ataque *= 2;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo2 == EnumeradoTipos.BICHO && pokemonRival.tipo2 == EnumeradoTipos.FUEGO|| pokemonRival.tipo2 == EnumeradoTipos.VOLADOR){
-            pokemonEntrenador.ataque *= 0.5;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo2 == EnumeradoTipos.VOLADOR && pokemonRival.tipo2 == EnumeradoTipos.PLANTA || pokemonRival.tipo2 == EnumeradoTipos.BICHO){
-            pokemonEntrenador.ataque *= 2;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo2 == EnumeradoTipos.VOLADOR && pokemonRival.tipo2 == EnumeradoTipos.ELECTRICO || pokemonRival.tipo2 == EnumeradoTipos.TIERRA){
-            pokemonEntrenador.ataque *= 0.5;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo2 == EnumeradoTipos.ELECTRICO && pokemonRival.tipo2 == EnumeradoTipos.VOLADOR || pokemonRival.tipo2 == EnumeradoTipos.AGUA){
-            pokemonEntrenador.ataque *= 2;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo2 == EnumeradoTipos.ELECTRICO && pokemonRival.tipo2 == EnumeradoTipos.TIERRA || pokemonRival.tipo2 == EnumeradoTipos.PLANTA){
-            pokemonEntrenador.ataque *= 0.5;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo2 == EnumeradoTipos.TIERRA && pokemonRival.tipo2 == EnumeradoTipos.FUEGO || pokemonRival.tipo2 == EnumeradoTipos.ELECTRICO){
-            pokemonEntrenador.ataque *= 2;
-            resultado = true;
-
-        }else if(pokemonEntrenador.tipo2 == EnumeradoTipos.TIERRA && pokemonRival.tipo2 == EnumeradoTipos.AGUA || pokemonRival.tipo2 == EnumeradoTipos.PLANTA){
-            pokemonEntrenador.ataque *= 0.5;
-            resultado = true;
         }
-        return false;
+        return NEUTRO;
     }
 
-    public void ataque(){
-        if (pokemonEntrenador.velocidad >= pokemonRival.velocidad){
+    public double potenciaTotal(AtaqueMov movimientoUsar, ClasePokemon pokemonRival){
+        double potenciaTotal = 0;
+        if(movimientoUsar.tipo == EnumeradoTipos.NORMAL){
+            potenciaTotal = ((this.ataque * movimientoUsar.getPotencia()) - pokemonRival.defensa);
+            potenciaTotal *= ventajaDesventaja(this.tipo1, pokemonRival.tipo1);
+        }else if(movimientoUsar.tipo == this.tipo1){
+            potenciaTotal = ((this.ataque * 1.2 *  movimientoUsar.getPotencia()) - pokemonRival.defensa);
+            potenciaTotal *= ventajaDesventaja(this.tipo1, pokemonRival.tipo1);
+        }else if(ventajaDesventaja(pokemonRival.tipo1, movimientoUsar.tipo)==VENTAJA){
+            potenciaTotal = ((this.ataque * 0.5 *  movimientoUsar.getPotencia()) - pokemonRival.defensa);
+            potenciaTotal *= ventajaDesventaja(this.tipo1, pokemonRival.tipo1);
+        }
+        
+        return potenciaTotal;
+    }
 
+    public void ataqueAtaqueMov(ClasePokemon pokemonEntrenador, ClasePokemon pokemonRival, AtaqueMov movimientoUsar){
+        if (pokemonEntrenador.velocidad >= pokemonRival.velocidad){
+            
             do {
-                pokemonRival.actualizarVida(pokemonEntrenador.getAtaque());
-                pokemonEntrenador.actualizarVida(pokemonRival.getAtaque());
+                pokemonRival.actualizarVida(pokemonEntrenador.potenciaTotal(movimientoUsar, pokemonRival));
+                pokemonEntrenador.actualizarVida(pokemonRival.potenciaTotal(movimientoUsar, pokemonRival));
                 
             } while (pokemonEntrenador.vitalidad == 0 || pokemonRival.vitalidad == 0);
         }
         do {
-            pokemonEntrenador.actualizarVida(pokemonRival.getAtaque());
-            pokemonRival.actualizarVida(pokemonEntrenador.getAtaque());
+            pokemonEntrenador.actualizarVida(pokemonRival.potenciaTotal(movimientoUsar, pokemonRival));
+            pokemonRival.actualizarVida(pokemonEntrenador.potenciaTotal(movimientoUsar, pokemonRival));
             
         } while (pokemonEntrenador.vitalidad == 0 || pokemonRival.vitalidad == 0);
 
     }
 
-    public void actualizarVida(int cantidad) {
+    public void actualizarVida(double cantidad) {
         this.vitalidad -= cantidad;
         if (this.vitalidad < 0) {
             this.vitalidad = 0;
         }
     }
-   
+    
     public static void inicializarListaNombres(ArrayList<String> paramNombresPokemon){
         nombresPokemon = paramNombresPokemon;
     }
