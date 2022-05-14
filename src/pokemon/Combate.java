@@ -89,17 +89,7 @@ public class Combate {
         }
     }
 
-    public boolean combatir(){
-        
-        return false;
-    }
-
     public boolean retirarse(){
-        
-        return false;
-    }
-
-    public boolean experienciaObtenida(){
         
         return false;
     }
