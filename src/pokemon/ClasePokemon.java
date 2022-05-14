@@ -223,17 +223,6 @@ public class ClasePokemon {
         return false;
     }
 
-    public void actualizarVida(int cantidad) {
-        this.vitalidad -= cantidad;
-        if (this.vitalidad < 0) {
-            this.vitalidad = 0;
-        }
-    }
-
-    public void primeroEnAtacar(){
-        
-    }
-
     public boolean ventajaDesventaja() {
         boolean resultado=false;
         if(pokemonEntrenador.tipo1 == EnumeradoTipos.AGUA && pokemonRival.tipo1 == EnumeradoTipos.FUEGO || pokemonRival.tipo1 == EnumeradoTipos.TIERRA){
@@ -478,6 +467,13 @@ public class ClasePokemon {
             
         } while (pokemonEntrenador.vitalidad == 0 || pokemonRival.vitalidad == 0);
 
+    }
+
+    public void actualizarVida(int cantidad) {
+        this.vitalidad -= cantidad;
+        if (this.vitalidad < 0) {
+            this.vitalidad = 0;
+        }
     }
    
     public static void inicializarListaNombres(ArrayList<String> paramNombresPokemon){
