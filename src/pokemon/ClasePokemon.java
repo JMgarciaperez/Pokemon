@@ -196,6 +196,13 @@ public class ClasePokemon {
         this.tipo2 = EnumeradoTipos.NORMAL;
     }
 
+    public void experienciaTrasCombate(double experienciaTengo){
+
+        if ((pokemonEntrenador.vitalidad>0)&&(pokemonRival.vitalidad==0))
+        experienciaTengo = getExperiencia();
+        pokemonEntrenador.setExperiencia(experienciaTengo+((pokemonEntrenador.nivel + pokemonRival.nivel)*10)/4);
+    }
+    
     public boolean subirNivel() {
         boolean resultado=false;
         if(this.experiencia >= (10*nivel)){
@@ -470,13 +477,6 @@ public class ClasePokemon {
         nuevoPokemon.setTipo2(rnd.nextInt(5)+1);
         nuevoPokemon.setNombre(nombresPokemon.get(rnd.nextInt(nombresPokemon.size() -1)));
         return nuevoPokemon;
-    }
-
-    public void experienciaTrasCombate(double experienciaTengo){
-
-        if ((pokemonEntrenador.vitalidad>0)&&(pokemonRival.vitalidad==0))
-        experienciaTengo = getExperiencia();
-        pokemonEntrenador.setExperiencia(experienciaTengo+((pokemonEntrenador.nivel + pokemonRival.nivel)*10)/4);
     }
 
     @Override
