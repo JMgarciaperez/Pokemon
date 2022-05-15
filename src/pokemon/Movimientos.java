@@ -2,6 +2,7 @@ package pokemon;
 
 public abstract class Movimientos {
     protected String nombre;
+    protected int estaminaMov;
     protected int numeroTurnos;
     protected EnumeradoTipos tipo;
 
@@ -33,6 +34,14 @@ public abstract class Movimientos {
         this.nombre = nombre;
     }
 
+    public int getEstaminaMov() {
+     return estaminaMov;
+    }
+
+    public void setEstaminaMov(int estaminaMov) {
+        this.estaminaMov = estaminaMov;
+    }
+    
     public int getNumeroTurnos() {
         return this.numeroTurnos;
     }
@@ -49,7 +58,7 @@ public abstract class Movimientos {
         this.tipo = Tipo;
     }
 
-    public abstract boolean consumoEstamina(double estaminaUsada);
+    public abstract void consumoEstamina(ClasePokemon pokemon);
 
     @Override
     public String toString() {

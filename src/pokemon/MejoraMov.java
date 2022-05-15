@@ -36,9 +36,8 @@ public class MejoraMov extends Movimientos{
     }
 
     @Override
-    public boolean consumoEstamina(double estaminaUsada) {
-        // TODO Auto-generated method stub
-        return false;
+    public void consumoEstamina(ClasePokemon pokemon) {
+        pokemon.setEstamina(pokemon.getEstamina() - this.estaminaMov);
     }
 
     @Override
