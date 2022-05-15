@@ -13,7 +13,7 @@ public class ClasePokemon {
     private int ataqueEspecial;
     private int defensaEspecial;
     private float velocidad;
-    private int estamina;
+    protected int estamina;
     private int nivel;
     private double experiencia;
     private EnumeradoTipos tipo1;
@@ -274,7 +274,7 @@ public class ClasePokemon {
         return NEUTRO;
     }
 
-    public double potenciaTotal(AtaqueMov movimientoUsar, ClasePokemon pokemonRival){
+    public double potenciaTotal(Movimientos movimientoUsar, ClasePokemon pokemonRival){
         double potenciaTotal = 0;
         if(movimientoUsar.tipo == EnumeradoTipos.NORMAL){
             potenciaTotal = ((this.ataque * movimientoUsar.getPotencia()) - pokemonRival.defensa);
@@ -286,11 +286,10 @@ public class ClasePokemon {
             potenciaTotal = ((this.ataque * 0.5 *  movimientoUsar.getPotencia()) - pokemonRival.defensa);
             potenciaTotal *= ventajaDesventaja(this.tipo1, pokemonRival.tipo1);
         }
-        
         return potenciaTotal;
     }
 
-    public void ataqueAtaqueMov(ClasePokemon pokemonEntrenador, ClasePokemon pokemonRival, AtaqueMov movimientoUsar){
+    public void ataqueMovimientos(ClasePokemon pokemonEntrenador, ClasePokemon pokemonRival, Movimientos movimientoUsar){
         if (pokemonEntrenador.velocidad >= pokemonRival.velocidad){
             
             do {
