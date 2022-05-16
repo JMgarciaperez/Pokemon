@@ -5,6 +5,14 @@
         "lib/**/*.jar",
         "c:\\Users\\JoseAndrésPerezMartí\\Desktop\\MySqlJdbcDriver\\mysql-connector-java-8.0.27.jar",
         "c:\\Users\\JoséMaríaGarciaPerez\\Desktop\\MySqlJdbcDriver\\mysql-connector-java-8.0.27.jar",
-        "c:\\Users\\usuario\\Downloads\\MySqlJdbcDriver\\mysql-connector-java-8.0.27.jar"
+        "c:\\Users\\usuario\\Downloads\\MySqlJdbcDriver\\mysql-connector-java-8.0.27.jar",
+        "c:\\Users\\CHEMA\\Desktop\\javafx-sdk-18.0.1\\lib\\javafx.base.jar",
+        "c:\\Users\\CHEMA\\Desktop\\javafx-sdk-18.0.1\\lib\\javafx.controls.jar",
+        "c:\\Users\\CHEMA\\Desktop\\javafx-sdk-18.0.1\\lib\\javafx.fxml.jar",
+        "c:\\Users\\CHEMA\\Desktop\\javafx-sdk-18.0.1\\lib\\javafx.graphics.jar",
+        "c:\\Users\\CHEMA\\Desktop\\javafx-sdk-18.0.1\\lib\\javafx.media.jar",
+        "c:\\Users\\CHEMA\\Desktop\\javafx-sdk-18.0.1\\lib\\javafx.swing.jar",
+        "c:\\Users\\CHEMA\\Desktop\\javafx-sdk-18.0.1\\lib\\javafx.web.jar",
+        "c:\\Users\\CHEMA\\Desktop\\javafx-sdk-18.0.1\\lib\\javafx-swt.jar"
     ]
 }
