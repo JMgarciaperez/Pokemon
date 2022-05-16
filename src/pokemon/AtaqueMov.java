@@ -1,40 +1,15 @@
 package pokemon;
 
 public class AtaqueMov extends Movimientos{
-    protected int potencia;
-
-
-    public int getPotencia() {
-        return this.potencia;
-    }
-
-    public void setPotencia(int potencia) {
-        this.potencia = potencia;
-    }
-
-
+    
     public AtaqueMov() {
-        this.potencia=0;
+        super();
     }
 
-
-    public AtaqueMov(int potencia) {
-        this.potencia = potencia;
-    }
-
-    public AtaqueMov(AtaqueMov am) {
-        this.potencia = am.potencia;
-    }
 
     @Override
     public void consumoEstamina(ClasePokemon pokemon) {
         pokemon.setEstamina(pokemon.getEstamina() - this.estaminaMov);
     }
-    
-    @Override
-    public String toString() {
-        return super.toString() + "{" +
-            " potencia='" + getPotencia() + "'" +
-            "}";
-    }
+
 }

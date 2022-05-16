@@ -25,6 +25,7 @@ public class ClasePokemon {
     private static final double VENTAJA = 2;
     private static final double DESVENTAJA = 0.5;
     private static final double NEUTRO = 1;
+    
     // TODO: Esto se hace en un main o fuera de la clase
     // ClasePokemon pokemonEntrenador = new ClasePokemon();
     // ClasePokemon pokemonRival = new ClasePokemon();
