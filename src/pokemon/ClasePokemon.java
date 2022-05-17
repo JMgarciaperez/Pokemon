@@ -387,7 +387,7 @@ public class ClasePokemon {
         ClasePokemon e = null;
         while (rs.next()) {
             e = new ClasePokemon();
-            e.setIdPokemon(rs.getInt("ID_POKEMON" + 1));
+            e.setIdPokemon(rs.getInt(1)+ 1);
             
             System.out.println(e.toString());
         }

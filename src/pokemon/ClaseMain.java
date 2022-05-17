@@ -1,5 +1,6 @@
 package pokemon;
 
+
 import java.io.IOException;
 import java.sql.*;
 import javax.sql.*;
@@ -13,7 +14,7 @@ import javafx.stage.Stage;
 public class ClaseMain extends Application{
     
     public static void main(String[] args) {
-        //launch(args);
+        
     
         Connection conec;
         String url="jdbc:mysql://localhost:3306/pokemones";
@@ -26,6 +27,7 @@ public class ClaseMain extends Application{
             conec = DriverManager.getConnection(url, login, pass);
  
             System.out.println("Conexión establecida");
+            launch(args);
  
             try{
                 conec.close();
@@ -40,14 +42,14 @@ public class ClaseMain extends Application{
             e.printStackTrace();
         }
 
-        Combate c = new Combate();
+        /*Combate c = new Combate();
 
         Turno t1 = new Turno(1,
         "ECharmander usa Ascuas",
         "Squirtel usa Burbujas");
 
         c.addTurnos(t1);
-        c.escribirFichero();
+        c.escribirFichero();*/
 
 
         
@@ -57,7 +59,7 @@ public class ClaseMain extends Application{
         public void start(Stage primaryStage)  {
             
             try{
-                Parent root = FXMLLoader.load(getClass().getResource("vistas/menu principal.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("vistas/menuPrincipal.fxml"));
                 Scene scene =new Scene(root);
 
                 primaryStage.setScene(scene);
