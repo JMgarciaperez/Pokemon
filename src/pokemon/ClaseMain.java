@@ -13,34 +13,12 @@ public class ClaseMain extends Application{
     
     public static void main(String[] args) {
         launch(args);
-    }
-       
-        @Override
-        public void start(Stage primaryStage)  {
-            
-            try{
-                Parent root = FXMLLoader.load(getClass().getResource(name : "/.vistas/menu principal.fxml"));
-                Scene scene =new Scene(root);
-
-                primaryStage.setScene(scene);
-                primaryStage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            
-        }
-     
-
-
-
-
-
+    
         Connection conec;
         String url="jdbc:mysql://localhost:3306/pokemones";
         String login="root";
         String pass="";
 
-        
         try{
  
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -69,17 +47,25 @@ public class ClaseMain extends Application{
 
         c.addTurnos(t1);
         c.escribirFichero();
+
+
+        
     }
 
+    @Override
+        public void start(Stage primaryStage)  {
+            
+            try{
+                Parent root = FXMLLoader.load(getClass().getResource("/.vistas/menu principal.fxml"));
+                Scene scene =new Scene(root);
 
-    ClasePokemon.generarPokemonAleatorio(nombre);
+                primaryStage.setScene(scene);
+                primaryStage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            
+        }
 
-
-
-
-
-
-
-
-
+    //ClasePokemon.generarPokemonAleatorio(nombre);
 }

@@ -1,11 +1,15 @@
 package pokemon;
 
+import java.io.IOException;
+import java.sql.*;
+import javax.sql.*;
 import java.util.ArrayList;
 import java.util.Random;
 
 public class ClasePokemon {
 
     private int idPokemon;
+    private int numPokedex;
     private String nombre;
     private String mote;
     private int vitalidad;
@@ -19,6 +23,7 @@ public class ClasePokemon {
     private double experiencia;
     private EnumeradoTipos tipo1;
     private EnumeradoTipos tipo2;
+    private String fotoPokemon;
     private ArrayList<Movimientos> ColeccionMov;
     private static ArrayList<String> nombresPokemon = new ArrayList<>();
 
@@ -34,6 +39,7 @@ public class ClasePokemon {
     public ClasePokemon(){
         super();
         this.idPokemon = 0;
+        this.numPokedex = 0;
         this.nombre = "";
         this.mote = "";
         this.vitalidad = 0;
@@ -47,16 +53,19 @@ public class ClasePokemon {
         this.experiencia = 0;
         this.tipo1 = EnumeradoTipos.NORMAL;
         this.tipo2 = EnumeradoTipos.NORMAL;
+        this.fotoPokemon = "";
         this.ColeccionMov = new ArrayList<Movimientos>();
+
     }
 
     
     
-    public ClasePokemon(int idPokemon, String nombre, String mote, int vitalidad, int ataque, int defensa, int ataqueEspecial, 
+    public ClasePokemon(int idPokemon, int numPokedex, String nombre, String mote, int vitalidad, int ataque, int defensa, int ataqueEspecial, 
                         int defensaEspecial, float velocidad, int estamina, int nivel, double experiencia , 
-                        EnumeradoTipos tipo1, EnumeradoTipos tipo2, ArrayList<Movimientos> ColeccionMov) {
+                        EnumeradoTipos tipo1, EnumeradoTipos tipo2,String fotoPokemon, ArrayList<Movimientos> ColeccionMov) {
         super();
         this.idPokemon = idPokemon;
+        this.numPokedex = numPokedex;
         this.nombre = nombre;
         this.mote = mote;
         this.vitalidad = vitalidad;
@@ -70,12 +79,14 @@ public class ClasePokemon {
         this.experiencia = experiencia;
         this.tipo1 = tipo1;
         this.tipo2 = tipo2;
+        this.fotoPokemon = fotoPokemon;
         this.ColeccionMov = ColeccionMov;
     }
 
     public ClasePokemon(ClasePokemon cp){
         super();
         this.idPokemon = cp.idPokemon;
+        this.numPokedex = cp.numPokedex;
         this.nombre = cp.nombre;
         this.mote = cp.mote;
         this.vitalidad = cp.vitalidad;
@@ -89,9 +100,25 @@ public class ClasePokemon {
         this.experiencia = cp.experiencia;
         this.tipo1 = cp.tipo1;
         this.tipo2 = cp.tipo2;
+        this.fotoPokemon = cp.fotoPokemon;
         this.ColeccionMov = cp.ColeccionMov;
     }
 
+    public int getIdPokemon() {
+        return this.idPokemon;
+    }
+
+    public void setIdPokemon(int idPokemon) {
+        this.idPokemon = idPokemon;
+    }
+
+    public int getNumPokedex() {
+        return this.numPokedex;
+    }
+
+    public void setNumPokedex(int numPokedex) {
+        this.numPokedex = numPokedex;
+    }
 
     public String getNombre() {
         return this.nombre;
@@ -193,7 +220,7 @@ public class ClasePokemon {
         return this.tipo1;
     }
 
-    public void setTipo1(int tipo1) {
+    public void setTipo1(EnumeradoTipos tipo1) {
         this.tipo1 = EnumeradoTipos.NORMAL;
     }
 
@@ -201,16 +228,16 @@ public class ClasePokemon {
         return this.tipo2;
     }
 
-    public void setTipo2(int tipo2) {
+    public void setTipo2(EnumeradoTipos tipo2) {
         this.tipo2 = EnumeradoTipos.NORMAL;
     }
-
-    public int getIdPokemon() {
-        return this.idPokemon;
+    
+    public String getFotoPokemon() {
+        return this.fotoPokemon;
     }
 
-    public void setIdPokemon(int idPokemon) {
-        this.idPokemon = idPokemon;
+    public void setFotoPokemon(String fotoPokemon) {
+        this.fotoPokemon = fotoPokemon;
     }
 
     public void experienciaTrasCombate(ClasePokemon pokemonEntrenador ,ClasePokemon pokemonRival){
@@ -326,9 +353,9 @@ public class ClasePokemon {
         }
     }
     
-    public static void inicializarListaNombres(ArrayList<String> paramNombresPokemon){
-        nombresPokemon = paramNombresPokemon;
-    }
+    //public static void inicializarListaNombres(ArrayList<String> paramNombresPokemon){
+    //  nombresPokemon = paramNombresPokemon;
+    //}
 
     public static ClasePokemon generarPokemonAleatorio(String nombre){
         Random rnd = new Random();
@@ -343,6 +370,59 @@ public class ClasePokemon {
         nuevoPokemon.setEstamina(rnd.nextInt(30)+20);
         return nuevoPokemon;
     }
+    
+    public static void mostrarPokemon(Connection conec, ClasePokemon p, int resultado) throws SQLException {
+        Random rnd = new Random();
+        resultado = (rnd.nextInt(34) + 1);
+
+        String consulta = "SELECT * FROM POKEDEX WHERE NUM_POKEDEX = " + resultado;
+        Statement statement = conec.createStatement();
+        ResultSet rs = statement.executeQuery(consulta);
+
+        ClasePokemon e = null;
+        while (rs.next()) {
+            e = new ClasePokemon();
+            e.setNumPokedex(rs.getInt("NUM_POKEDEX"));
+            e.setNombre(rs.getString("NOMBRE"));
+            e.setTipo1(EnumeradoTipos.valueOf(rs.getString("TIPO1")));
+            e.setTipo2(EnumeradoTipos.valueOf(rs.getString("TIPO2")));
+            e.setFotoPokemon(rs.getString("IMAGEN"));
+            
+            
+            System.out.println(e.toString());
+        }
+        statement.close();
+    }
+
+    public static void insertarPokemon(Connection conec, ClasePokemon p) throws SQLException {
+		String sentencia ="INSERT INTO POKEMON_ENTRENADOR(ID_POKEMON,ID_ENTRENADOR, NUM_POKEDEX, MOTE, VITALIDAD, ATAQUE, DEFENSA, ATAQUE_ESPECIAL, DEFENSA_ESP, ESTAMINA, VELOCIDAD, NIVEL, FERTILIDAD, EQUIPO) VALUES("
+                            + p.getIdPokemon()
+                            +",1"
+                            +","+p.getNumPokedex()
+                            +",NULL"
+                            +","+p.getVitalidad()
+                            +","+p.getAtaque()
+                            +","+p.getDefensa()
+                            +","+p.getAtaqueEspecial()
+                            +","+p.getDefensaEspecial()
+                            +","+p.getEstamina()
+                            +","+p.getVelocidad()
+                            +",DEFAULT"
+                            +",2"
+                            +")";
+		Statement stmt = null;
+		try {
+			stmt = conec.createStatement();
+			stmt.executeUpdate(sentencia);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			stmt.close(); // Puede lanzar SQLExceptions, por eso he puesto el
+			// throws en la cabecera del metodo
+		}
+													   
+	}
 
     @Override
     public String toString() {

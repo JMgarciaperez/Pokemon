@@ -108,6 +108,7 @@ public class Entrenador {
             
         }
     }
+
     @Override
     public String toString() {
         return "{" +
