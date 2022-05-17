@@ -100,15 +100,6 @@ public class Entrenador {
         return false;
     }
 
-    public void probabilidadCaptura(int resultado){
-        Random rnd = new Random();
-
-        resultado = (rnd.nextInt(3) + 1);
-        if(resultado >=2){
-            
-        }
-    }
-
     @Override
     public String toString() {
         return "{" +
