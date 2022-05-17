@@ -56,7 +56,7 @@ public class ClaseMain extends Application{
         public void start(Stage primaryStage)  {
             
             try{
-                Parent root = FXMLLoader.load(getClass().getResource("/.vistas/menu principal.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("vistas/menu principal.fxml"));
                 Scene scene =new Scene(root);
 
                 primaryStage.setScene(scene);
