@@ -2,6 +2,7 @@ package pokemon;
 
 import java.io.IOException;
 import java.sql.*;
+import javax.sql.*;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +13,7 @@ import javafx.stage.Stage;
 public class ClaseMain extends Application{
     
     public static void main(String[] args) {
-        launch(args);
+        //launch(args);
     
         Connection conec;
         String url="jdbc:mysql://localhost:3306/pokemones";

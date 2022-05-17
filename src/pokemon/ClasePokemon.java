@@ -25,7 +25,7 @@ public class ClasePokemon {
     private EnumeradoTipos tipo2;
     private String fotoPokemon;
     private ArrayList<Movimientos> ColeccionMov;
-    private static ArrayList<String> nombresPokemon = new ArrayList<>();
+    // private static ArrayList<String> nombresPokemon = new ArrayList<>();
 
 
     private static final double VENTAJA = 2;
