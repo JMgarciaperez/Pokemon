@@ -370,7 +370,21 @@ public class ClasePokemon {
         nuevoPokemon.setEstamina(rnd.nextInt(30)+20);
         return nuevoPokemon;
     }
-    
+    public static void cogerMayorIdPokemon(Connection con,ClasePokemon pokemon) throws SQLException {	
+        String consulta = "SELECT MAX(ID_POKEMON) FROM POKEMON_ENTRENADOR AS ID_POKEMON";
+        Statement statement = con.createStatement();
+        ResultSet rs = statement.executeQuery(consulta);
+
+        ClasePokemon e = null;
+        while (rs.next()) {
+            e = new ClasePokemon();
+            e.setIdPokemon(rs.getInt("ID_POKEMON" + 1));
+            
+            System.out.println(e.toString());
+        }
+        statement.close();
+    }
+
     public static void mostrarPokemon(Connection conec, ClasePokemon p, int resultado) throws SQLException {
         Random rnd = new Random();
         resultado = (rnd.nextInt(34) + 1);
@@ -387,8 +401,7 @@ public class ClasePokemon {
             e.setTipo1(EnumeradoTipos.valueOf(rs.getString("TIPO1")));
             e.setTipo2(EnumeradoTipos.valueOf(rs.getString("TIPO2")));
             e.setFotoPokemon(rs.getString("IMAGEN"));
-            
-            
+              
             System.out.println(e.toString());
         }
         statement.close();
