@@ -440,7 +440,9 @@ public class ClasePokemon {
     @Override
     public String toString() {
         return "{" +
-            " nombre='" + getNombre() + "'" +
+            " idPokemon='" + getIdPokemon() + "'" +
+            ", numPokedex='" + getNumPokedex() + "'" +
+            ", nombre='" + getNombre() + "'" +
             ", mote='" + getMote() + "'" +
             ", vitalidad='" + getVitalidad() + "'" +
             ", ataque='" + getAtaque() + "'" +
@@ -453,8 +455,8 @@ public class ClasePokemon {
             ", experiencia='" + getExperiencia() + "'" +
             ", tipo1='" + getTipo1() + "'" +
             ", tipo2='" + getTipo2() + "'" +
+            ", fotoPokemon='" + getFotoPokemon() + "'" +
             ", ColeccionMov='" + getColeccionMov() + "'" +
             "}";
-    }
-    
+    } 
 }
