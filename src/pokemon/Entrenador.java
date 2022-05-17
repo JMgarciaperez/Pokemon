@@ -1,50 +1,36 @@
 package pokemon;
 
-import java.util.ArrayList;
+import java.util.Random;
 
 public class Entrenador {
 
 
     private String nombre;
     private int pokeMonedas;
-    ArrayList<ClasePokemon> ColeccionCaja;
-    protected Combate combate;
-    private ClasePokemon[] equipo; 
-    protected ClasePokemon[] equipoSecundario;
+    private ClasePokemon[] equipoPokemon; 
+    protected ClasePokemon[] equipoCaja;
 
 
-  public Entrenador(String nombre, int pokeMonedas, ClasePokemon[] equipo, ClasePokemon[] equipoSecundario) {
+  public Entrenador(String nombre, int pokeMonedas, ClasePokemon[] equipoPokemon, ClasePokemon[] equipoCaja) {
       super();
         this.nombre = nombre;
         this.pokeMonedas = pokeMonedas;
-        this.equipo = equipo;
-        this.equipo=equipoSecundario;
+        this.equipoPokemon = equipoPokemon;
+        this.equipoCaja =equipoCaja;
     }
 
-    public Entrenador() {
-        super();
-        this.nombre = "";
-        this.pokeMonedas = 0;
+    public ClasePokemon[] getEquipoPokemon() {
+        return equipoPokemon;
+    }
+    public void  setEquipoPokemon(ClasePokemon[] equipoPokemon) {
+        this.equipoPokemon = equipoPokemon;
     }
 
-    public Entrenador(Entrenador e) {
-        super();
-        this.nombre = e.nombre;
-        this.pokeMonedas = e.pokeMonedas;
+    public ClasePokemon[] getEquipoCaja() {
+        return equipoCaja;
     }
-
-    public ClasePokemon[] getEquipo() {
-        return equipo;
-    }
-    public void  setEquipo(ClasePokemon[] equipo) {
-        this.equipo = equipo;
-    }
-
-    public ClasePokemon[] getEquipoSecundario() {
-        return equipoSecundario;
-    }
-    public void  setEquipoSecundario(ClasePokemon[] equipoSecundario) {
-        this.equipo = equipoSecundario;
+    public void  setEquipoCaja(ClasePokemon[] equipoCaja) {
+        this.equipoCaja = equipoCaja;
     }
 
     public String getNombre() {
@@ -63,26 +49,65 @@ public class Entrenador {
         this.pokeMonedas = pokeMonedas;
     }
 
-    public boolean moverPokemonEquipo(){
-        
-        return false;
+    public void moverPokemonEquipoPokemon(ClasePokemon pokemon){
+        if(equipoCaja.length > 1){
+            ClasePokemon pok;
+
+            for (int i=0; i<equipoCaja.length; i++){
+                pok = equipoPokemon[i];
+
+                if(pok.getIdPokemon() == pokemon.getIdPokemon()){
+                    equipoCaja[i] = null;
+                    
+                    for (int j=0; j < equipoCaja.length; j++){
+                        if (equipoPokemon[j]==null){
+                            equipoPokemon[j] = pok;
+                            break;
+
+                        }
+                    }
+                }
+            }
+        }
     }
 
-    public boolean moverPokemonCaja(){
+
+    public void moverPokemonCaja(ClasePokemon pokemon){
         
-        return false;
+        if(equipoPokemon.length > 1){
+            ClasePokemon pok;
+
+            for (int i=0; i<equipoPokemon.length; i++){
+                pok = equipoPokemon[i];
+
+                if(pok.getIdPokemon() == pokemon.getIdPokemon()){
+                    equipoPokemon[i] = null;
+                    
+                    for (int j=0; j < equipoCaja.length; j++){
+                        if (equipoCaja[j]==null){
+                            equipoCaja[j] = pok;
+                            break;
+
+                        }
+                    }
+                }
+            }
+        }
     }
 
-    public boolean entrenarPokemon(){
-        
-        return false;
-    }
-
-    public boolean capturarPokemon(int capturar){
+    public boolean capturarPokemon(){
      
         return false;
     }
 
+    public void probabilidadCaptura(int resultado){
+        Random rnd = new Random();
+
+        resultado = (rnd.nextInt(3) + 1);
+        if(resultado >=2){
+            
+        }
+    }
     @Override
     public String toString() {
         return "{" +

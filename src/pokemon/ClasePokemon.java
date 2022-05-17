@@ -5,6 +5,7 @@ import java.util.Random;
 
 public class ClasePokemon {
 
+    private int idPokemon;
     private String nombre;
     private String mote;
     private int vitalidad;
@@ -32,6 +33,7 @@ public class ClasePokemon {
 
     public ClasePokemon(){
         super();
+        this.idPokemon = 0;
         this.nombre = "";
         this.mote = "";
         this.vitalidad = 0;
@@ -50,10 +52,11 @@ public class ClasePokemon {
 
     
     
-    public ClasePokemon(String nombre, String mote, int vitalidad, int ataque, int defensa, int ataqueEspecial, 
+    public ClasePokemon(int idPokemon, String nombre, String mote, int vitalidad, int ataque, int defensa, int ataqueEspecial, 
                         int defensaEspecial, float velocidad, int estamina, int nivel, double experiencia , 
                         EnumeradoTipos tipo1, EnumeradoTipos tipo2, ArrayList<Movimientos> ColeccionMov) {
         super();
+        this.idPokemon = idPokemon;
         this.nombre = nombre;
         this.mote = mote;
         this.vitalidad = vitalidad;
@@ -72,6 +75,7 @@ public class ClasePokemon {
 
     public ClasePokemon(ClasePokemon cp){
         super();
+        this.idPokemon = cp.idPokemon;
         this.nombre = cp.nombre;
         this.mote = cp.mote;
         this.vitalidad = cp.vitalidad;
@@ -201,6 +205,14 @@ public class ClasePokemon {
         this.tipo2 = EnumeradoTipos.NORMAL;
     }
 
+    public int getIdPokemon() {
+        return this.idPokemon;
+    }
+
+    public void setIdPokemon(int idPokemon) {
+        this.idPokemon = idPokemon;
+    }
+
     public void experienciaTrasCombate(ClasePokemon pokemonEntrenador ,ClasePokemon pokemonRival){
 
         if ((pokemonEntrenador.vitalidad>0)&&(pokemonRival.vitalidad==0))
@@ -322,18 +334,13 @@ public class ClasePokemon {
         Random rnd = new Random();
         ClasePokemon nuevoPokemon = new ClasePokemon();
         nuevoPokemon.setNivel(1);
-        nuevoPokemon.set(rnd.nextInt(5)+1);
-        nuevoPokemon.setVitalidad(rnd.nextInt(5)+1);
-        nuevoPokemon.setAtaque(rnd.nextInt(5)+1);
-        nuevoPokemon.setDefensa(rnd.nextInt(5)+1);
-        nuevoPokemon.setAtaqueEspecial(rnd.nextInt(5)+1);
-        nuevoPokemon.setDefensaEspecial(rnd.nextInt(5)+1);
-        nuevoPokemon.setVelocidad(rnd.nextInt(5)+1);
-        nuevoPokemon.setEstamina(rnd.nextInt(5)+1);
-        nuevoPokemon.setColeccionMov(rnd.nextInt(5)+1);
-        nuevoPokemon.setTipo1(rnd.nextInt(5)+1);
-        nuevoPokemon.setTipo2(rnd.nextInt(5)+1);
-        nuevoPokemon.setNombre(nombresPokemon.get(rnd.nextInt(nombresPokemon.size() -1)));
+        nuevoPokemon.setVitalidad(rnd.nextInt(30)+20);
+        nuevoPokemon.setAtaque(rnd.nextInt(30)+20);
+        nuevoPokemon.setDefensa(rnd.nextInt(30)+20);
+        nuevoPokemon.setAtaqueEspecial(rnd.nextInt(30)+20);
+        nuevoPokemon.setDefensaEspecial(rnd.nextInt(30)+20);
+        nuevoPokemon.setVelocidad(rnd.nextInt(30)+20);
+        nuevoPokemon.setEstamina(rnd.nextInt(30)+20);
         return nuevoPokemon;
     }
 
