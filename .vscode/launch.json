@@ -6,12 +6,19 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch ClaseMainClaseJoseti",
+            "request": "launch",
+            "mainClass": "pokemon.ClaseMain",
+            "projectName": "Pokemon_4b937b22",
+            "vmArgs": "--module-path=C:/Users/JoseAndrésPerezMartí/Desktop/openjfx-18.0.1_windows-x64_bin-sdk/javafx-sdk-18.0.1/lib --add-modules=javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
             "name": "Launch ClaseMain",
             "request": "launch",
             "mainClass": "pokemon.ClaseMain",
             "projectName": "Pokemon_a68d760",
             "vmArgs": "--module-path=C:/Users/usuario/Desktop/DesarrolloAplicacionesWeb/TrabajoPokemon/javafx-sdk-18.0.1/lib --add-modules=javafx.controls,javafx.fxml"
-            
         },
         {
             "type": "java",
@@ -31,8 +38,7 @@
             "name": "Launch ClaseMain",
             "request": "launch",
             "mainClass": "pokemon.ClaseMain",
-            "projectName": "Pokemon_11d14d47",
-            
+            "projectName": "Pokemon_11d14d47"
         }
     ]
 }
