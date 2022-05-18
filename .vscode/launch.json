@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch ClaseMainCasaChema",
+            "request": "launch",
+            "mainClass": "pokemon.ClaseMain",
+            "projectName": "Pokemon_3fd99790",
+            "vmArgs": "--module-path \"C:\\Users\\CHEMA\\Desktop\\javafx-sdk-18.0.1\\lib\" --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
             "name": "Launch ClaseMainClaseJoseti",
             "request": "launch",
             "mainClass": "pokemon.ClaseMain",
@@ -14,31 +28,11 @@
         },
         {
             "type": "java",
-            "name": "Launch ClaseMain",
+            "name": "Launch ClaseMainCasaJoseti",
             "request": "launch",
             "mainClass": "pokemon.ClaseMain",
             "projectName": "Pokemon_a68d760",
             "vmArgs": "--module-path=C:/Users/usuario/Desktop/DesarrolloAplicacionesWeb/TrabajoPokemon/javafx-sdk-18.0.1/lib --add-modules=javafx.controls,javafx.fxml"
-        },
-        {
-            "type": "java",
-            "name": "Launch Current File",
-            "request": "launch",
-            "mainClass": "${file}"
-        },
-        {
-            "type": "java",
-            "name": "Launch Main",
-            "request": "launch",
-            "mainClass": "main.Main",
-            "projectName": "Pokemon_11d14d47"
-        },
-        {
-            "type": "java",
-            "name": "Launch ClaseMain",
-            "request": "launch",
-            "mainClass": "pokemon.ClaseMain",
-            "projectName": "Pokemon_11d14d47"
         }
     ]
 }
