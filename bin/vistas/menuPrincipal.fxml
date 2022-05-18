@@ -88,7 +88,7 @@
          <children>
             <ImageView fitHeight="692.0" fitWidth="826.0" layoutX="-11.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../Downloads/Portada%20Facebook%20evento%20agencia%20viajes%20dos%20colorida%20rojo%20cyan.png" />
+                  <Image url="@../../img/menuPrincipal.png" />
                </image>
             </ImageView>
             <Button fx:id="btnStart" layoutX="126.0" layoutY="382.0" mnemonicParsing="false" onAction="#empezarPartida" prefHeight="25.0" prefWidth="101.0" text="START">
