@@ -41,9 +41,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InterCapturar">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.InterCombate">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -85,25 +85,29 @@
       </menus>
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
-         <children>
-            <ImageView layoutX="-10.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+      <children>
+            <ImageView fitHeight="390.0" fitWidth="652.0" layoutX="-7.0">
                <image>
-                  <Image url="@../../Pictures/DVMT-6OXcAE2rZY.jpg" />
+                  <Image url="@../../img/menuCombate.png" />
                </image>
             </ImageView>
-            <Button fx:id="btnGenerarPokemon" layoutX="815.0" layoutY="478.0" mnemonicParsing="false" onAction="#GenerarPokemon" prefHeight="41.0" prefWidth="178.0" text="Capturar otro Pokemon">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnLanzarPokeball" layoutX="815.0" layoutY="419.0" mnemonicParsing="false" onAction="#LanzarPokeball" prefHeight="41.0" prefWidth="178.0" text="Lanzar Pokeball">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-            <ImageView fx:id="imgPokemon" fitHeight="150.0" fitWidth="200.0" layoutX="415.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="imgPokeball" fitHeight="150.0" fitWidth="200.0" layoutX="420.0" layoutY="375.0" pickOnBounds="true" preserveRatio="true" />
-         </children>
+            <Button fx:id="btnAtaque1" layoutX="369.0" layoutY="318.0" mnemonicParsing="false" onAction="#ataque1" prefHeight="25.0" prefWidth="118.0" />
+            <Button fx:id="btnAtaque3" layoutX="369.0" layoutY="350.0" mnemonicParsing="false" onAction="#ataque3" prefHeight="25.0" prefWidth="118.0" />
+            <Button fx:id="btnRetirarse" layoutX="281.0" layoutY="350.0" mnemonicParsing="false" onAction="#retirarse" text="Retirase" />
+            <Button fx:id="btnAtaque2" layoutX="503.0" layoutY="318.0" mnemonicParsing="false" onAction="#ataque2" prefHeight="25.0" prefWidth="118.0" />
+            <Button fx:id="btnAtaque4" layoutX="503.0" layoutY="350.0" mnemonicParsing="false" onAction="#ataque4" prefHeight="25.0" prefWidth="118.0" />
+            <Text fx:id="textRecuadro" layoutX="34.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aquí iria la frase del combate" wrappingWidth="184.13671875" />
+            <Text fx:id="textNombrePoRival" layoutX="12.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nombrePOkemon" wrappingWidth="118.0" />
+            <Text fx:id="textNivelRival" layoutX="146.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" />
+            <Text fx:id="textMiNivel" layoutX="614.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" />
+            <Text fx:id="textNombrePo" layoutX="480.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nombrePokemon" wrappingWidth="106.810546875" />
+            <Text fx:id="textMiVidalActual" layoutX="564.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1000" />
+            <Text fx:id="textMiVidaMáx" layoutX="611.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1000" />
+            <Text fx:id="textVidaActualRi" layoutX="89.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1000" />
+            <Text fx:id="textVidaMaxRi" layoutX="136.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1000" />
+            <ImageView fx:id="imgMiPokemon" fitHeight="150.0" fitWidth="200.0" layoutX="81.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgPokemonRival" fitHeight="141.0" fitWidth="200.0" layoutX="369.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" />
+      </children>
     </AnchorPane>
   </children>
 </VBox>

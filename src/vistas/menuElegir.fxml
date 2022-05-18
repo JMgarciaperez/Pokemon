@@ -42,7 +42,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InterElegir">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.InterElegir">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -87,7 +87,7 @@
          <children>
             <ImageView fitHeight="375.0" fitWidth="643.0">
                <image>
-                  <Image url="@../../Downloads/Portada%20Facebook%20evento%20agencia%20viajes%20dos%20colorida%20rojo%20cyan%20(1).png" />
+                  <Image url="@../../img/menuElegir.png" />
                </image>
             </ImageView>
             <Button fx:id="btnCombate" layoutX="507.0" layoutY="286.0" mnemonicParsing="false" onAction="#combatir" prefHeight="25.0" prefWidth="91.0" text="Combate" />

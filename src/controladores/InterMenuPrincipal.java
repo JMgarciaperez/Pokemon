@@ -10,12 +10,19 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
 public class InterMenuPrincipal implements Initializable {
+  
+    
 
+   
     @FXML
     private Button btnStart;
 
     @FXML
     private void empezarPartida(ActionEvent event){
+        
+        
+
+        
 
     }
 
