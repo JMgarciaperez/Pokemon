@@ -9,9 +9,14 @@ import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import pokemon.ClasePokemon;
 
 public class InterCapturar implements Initializable{
@@ -66,10 +71,16 @@ public class InterCapturar implements Initializable{
     }
 
     @FXML
-    public void volverInicio(ActionEvent event){
-
-
-
+    public void volverInicio(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/menuElegir.FXML"));
+        Parent root = loader.load();
+        InterElegir controller = loader.getController();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.showAndWait();
+        stage.close();
     }
 
     @Override
