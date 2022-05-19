@@ -58,7 +58,7 @@ public class InterCapturar implements Initializable{
 
             //File img=new File("../../imgPo/IVISAUR.png");
             //InputStream isImage =(InputStream) new FileInputStream(img);
-            String ruta="../imgPo/"+pe.getFotoPokemon() + ".png";
+            String ruta="../imgPo/"+pe.getFotoPokemon();
             Image im=new Image(getClass().getResourceAsStream(ruta));
             imgPokemon.setImage(im);
             
