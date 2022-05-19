@@ -430,6 +430,7 @@ public class ClasePokemon {
                             +","+p.getEstamina()
                             +","+p.getVelocidad()
                             +",DEFAULT"
+                            +",DEFAULT"
                             +",2"
                             +")";
 		Statement stmt = null;
