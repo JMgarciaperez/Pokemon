@@ -407,8 +407,8 @@ public class ClasePokemon {
             e = new ClasePokemon();
             e.setNumPokedex(rs.getInt("NUM_POKEDEX"));
             e.setNombre(rs.getString("NOMBRE"));
-            e.setTipo1(EnumeradoTipos.valueOf(rs.getString("TIPO1")));
-            e.setTipo2(EnumeradoTipos.valueOf(rs.getString("TIPO2")));
+            e.setTipo1(EnumeradoTipos.valueOf(rs.getString("TIPO_1")));
+            e.setTipo2(EnumeradoTipos.valueOf(rs.getString("TIPO_2")));
             e.setFotoPokemon(rs.getString("IMAGEN"));
               
             System.out.println(e.toString());
