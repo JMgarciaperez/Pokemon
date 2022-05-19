@@ -111,7 +111,7 @@
                   <Font size="36.0" />
                </font>
             </Button>
-            <Button fx:id="btnRetirarse" layoutX="639.0" layoutY="955.0" mnemonicParsing="false" onAction="#retirarse" prefHeight="80.0" prefWidth="376.0" text="Retirase">
+            <Button fx:id="btnRetirarse" layoutX="639.0" layoutY="955.0" mnemonicParsing="false" onAction="#retirarse" prefHeight="80.0" prefWidth="376.0" text="Retirarse">
                <font>
                   <Font size="36.0" />
                </font></Button>
