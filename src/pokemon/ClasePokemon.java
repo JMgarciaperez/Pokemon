@@ -357,20 +357,6 @@ public class ClasePokemon {
     //  nombresPokemon = paramNombresPokemon;
     //}
 
-    public static ClasePokemon generarPokemonAleatorio(String nombre){
-        Random rnd = new Random();
-        ClasePokemon nuevoPokemon = new ClasePokemon();
-        nuevoPokemon.setNivel(1);
-        nuevoPokemon.setVitalidad(rnd.nextInt(30)+20);
-        nuevoPokemon.setAtaque(rnd.nextInt(30)+20);
-        nuevoPokemon.setDefensa(rnd.nextInt(30)+20);
-        nuevoPokemon.setAtaqueEspecial(rnd.nextInt(30)+20);
-        nuevoPokemon.setDefensaEspecial(rnd.nextInt(30)+20);
-        nuevoPokemon.setVelocidad(rnd.nextInt(30)+20);
-        nuevoPokemon.setEstamina(rnd.nextInt(30)+20);
-        return nuevoPokemon;
-    }
-
     public void probabilidadCaptura(int resultado){
         Random rnd = new Random();
 
@@ -388,15 +374,15 @@ public class ClasePokemon {
         while (rs.next()) {
             e = new ClasePokemon();
             e.setIdPokemon(rs.getInt(1)+ 1);
-            
-            System.out.println(e.toString());
+
         }
         statement.close();
     }
 
-    public static void mostrarPokemon(Connection conec, int resultado) throws SQLException {
+    public static void mostrarPokemon(Connection conec) throws SQLException {
         Random rnd = new Random();
-        resultado = (rnd.nextInt(34) + 1);
+
+        int resultado = (rnd.nextInt(34) + 1);
 
         String consulta = "SELECT * FROM POKEDEX WHERE NUM_POKEDEX = " + resultado;
         Statement statement = conec.createStatement();
@@ -410,7 +396,16 @@ public class ClasePokemon {
             e.setTipo1(EnumeradoTipos.valueOf(rs.getString("TIPO_1")));
             e.setTipo2(EnumeradoTipos.valueOf(rs.getString("TIPO_2")));
             e.setFotoPokemon(rs.getString("IMAGEN"));
+            e.setNivel(1);
+            e.setVitalidad(rnd.nextInt(30)+20);
+            e.setAtaque(rnd.nextInt(30)+20);
+            e.setDefensa(rnd.nextInt(30)+20);
+            e.setAtaqueEspecial(rnd.nextInt(30)+20);
+            e.setDefensaEspecial(rnd.nextInt(30)+20);
+            e.setVelocidad(rnd.nextInt(30)+20);
+            e.setEstamina(rnd.nextInt(30)+20);
               
+            System.out.println(resultado);
             System.out.println(e.toString());
         }
         statement.close();

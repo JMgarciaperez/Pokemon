@@ -49,6 +49,8 @@ public class InterCapturar implements Initializable{
  
             System.out.println("Conexión establecida");
             
+            ClasePokemon.mostrarPokemon(conec);
+            
             try{
                 conec.close();
                 System.out.println("Conexión cerrada");
