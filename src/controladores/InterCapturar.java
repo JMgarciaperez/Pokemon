@@ -30,17 +30,21 @@ public class InterCapturar implements Initializable{
     private Image imgPokemon;
 
 
-    public void GenerarPokemon(ActionEvent event){
+    @FXML
+    public void generarPokemon(ActionEvent event){
 
 
     }
 
-    public void LanzarPokeball(ActionEvent event){
+    @FXML
+    public void lanzarPokeball(ActionEvent event){
 
 
     }
 
-    public void VolverInicio(ActionEvent event){
+    @FXML
+    public void volverInicio(ActionEvent event){
+
 
 
     }
