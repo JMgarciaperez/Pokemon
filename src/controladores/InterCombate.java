@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.fxml.Initializable;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
@@ -60,11 +61,63 @@ public class InterCombate implements Initializable{
     @FXML
     private ImageView imgPokemonRival;
 
+    //Botones
+    @FXML
+    private void ataque1(ActionEvent event){
+    }
 
+    @FXML
+    private void ataque2(ActionEvent event){
+    }
 
+    @FXML
+    private void ataque3(ActionEvent event){
+    }
 
+    @FXML
+    private void ataque4(ActionEvent event){
+    }
 
+    @FXML
+    private void retirarse(ActionEvent event){
+    }
 
+    //Texto
+    @FXML
+    private void textoCombate(ActionEvent event){
+    }
+
+    @FXML
+    private void nombrePoRival(ActionEvent event){
+    }
+
+    @FXML
+    private void nivelRival(ActionEvent event){
+    }
+
+    @FXML
+    private void miNivel(ActionEvent event){
+    }
+
+    @FXML
+    private void nombreMiPokemon(ActionEvent event){
+    }
+
+    @FXML
+    private void miVidaActual(ActionEvent event){
+    }
+
+    @FXML
+    private void miVidaMax(ActionEvent event){
+    }
+
+    @FXML
+    private void vidaRival(ActionEvent event){
+    }
+    
+    @FXML
+    private void vidaRivalMax(ActionEvent event){
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

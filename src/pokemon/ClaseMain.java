@@ -15,7 +15,6 @@ public class ClaseMain extends Application{
     
     public static void main(String[] args) {
         launch(args);
-        /*
     
         Connection conec;
         String url="jdbc:mysql://localhost:3306/pokemones";
@@ -43,6 +42,8 @@ public class ClaseMain extends Application{
             e.printStackTrace();
         }
 
+        /*
+
         Combate c = new Combate();
 
         Turno t1 = new Turno(1,
@@ -50,10 +51,10 @@ public class ClaseMain extends Application{
         "Squirtel usa Burbujas");
 
         c.addTurnos(t1);
-        c.escribirFichero();*/
+        c.escribirFichero();
 
+        */
 
-        
     }
 
     @Override

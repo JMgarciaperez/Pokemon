@@ -36,8 +36,16 @@ public class InterElegir implements Initializable {
     }
 
     @FXML
-    private void combatir(ActionEvent event){
-        
+    private void combatir(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/menuCombate.FXML"));
+        Parent root = loader.load();
+        InterCombate controller = loader.getController();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.showAndWait();
+        stage.close();
     }
 
     @Override
