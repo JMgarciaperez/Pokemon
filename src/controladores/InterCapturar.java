@@ -56,8 +56,6 @@ public class InterCapturar implements Initializable{
             ClasePokemon pe = new ClasePokemon();
             pe.mostrarPokemon(conec);
 
-            //File img=new File("../../imgPo/IVISAUR.png");
-            //InputStream isImage =(InputStream) new FileInputStream(img);
             String ruta="../imgPo/"+pe.getFotoPokemon();
             Image im=new Image(getClass().getResourceAsStream(ruta));
             imgPokemon.setImage(im);
@@ -79,6 +77,34 @@ public class InterCapturar implements Initializable{
 
     @FXML
     public void lanzarPokeball(ActionEvent event){
+
+        Connection conec;
+        String url="jdbc:mysql://localhost:3306/pokemones";
+        String login="root";
+        String pass="";
+
+        try{
+ 
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conec = DriverManager.getConnection(url, login, pass);
+ 
+            System.out.println("Conexión establecida");
+
+            ClasePokemon pe = new ClasePokemon();
+            pe.probabilidadCaptura(conec);
+            
+            try{
+                conec.close();
+                System.out.println("Conexión cerrada");
+            }catch(SQLException e3){
+                e3.printStackTrace();
+            }
+ 
+        }catch(ClassNotFoundException e1){
+            e1.printStackTrace();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
 
     }
 

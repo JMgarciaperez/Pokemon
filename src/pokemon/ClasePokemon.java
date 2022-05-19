@@ -357,23 +357,33 @@ public class ClasePokemon {
     //  nombresPokemon = paramNombresPokemon;
     //}
 
-    public void probabilidadCaptura(int resultado){
+    public void probabilidadCaptura(Connection conec) throws SQLException{
         Random rnd = new Random();
 
-        resultado = (rnd.nextInt(3) + 1);
-        if(resultado >=2){
+        int resultado = 0;
+        resultado = resultado + (rnd.nextInt(3) + 1);
+        if(resultado ==2 || resultado ==3){ 
+            try {
+                System.out.println("El pokemon ha sido capturado");
+                cogerMayorIdPokemon(conec);
+                insertarPokemon(conec);
+            } catch (Exception e) {
+
+            }
+            
+        }else{
+        System.out.println("No has capturado el pokemon");
         }
     }
 
-    public void cogerMayorIdPokemon(Connection con) throws SQLException {	
+    public void cogerMayorIdPokemon(Connection conec) throws SQLException {	
         String consulta = "SELECT MAX(ID_POKEMON) FROM POKEMON_ENTRENADOR AS ID_POKEMON";
-        Statement statement = con.createStatement();
+        Statement statement = conec.createStatement();
         ResultSet rs = statement.executeQuery(consulta);
 
-        ClasePokemon e = null;
         while (rs.next()) {
-            e = new ClasePokemon();
-            e.setIdPokemon(rs.getInt(1)+ 1);
+        
+            this.setIdPokemon(rs.getInt(1)+ 1);
 
         }
         statement.close();
@@ -388,16 +398,15 @@ public class ClasePokemon {
         Statement statement = conec.createStatement();
         ResultSet rs = statement.executeQuery(consulta);
 
-        ClasePokemon pe= null;
         while (rs.next()) {
             this.setNumPokedex(rs.getInt("NUM_POKEDEX"));
             this.setNombre(rs.getString("NOMBRE"));
             this.setTipo1(EnumeradoTipos.valueOf(rs.getString("TIPO_1")));
             if (rs.getObject("TIPO_2") != null){
 
-                pe.setTipo2(EnumeradoTipos.valueOf(rs.getString("TIPO_2")));
+                this.setTipo2(EnumeradoTipos.valueOf(rs.getString("TIPO_2")));
                    } else{
-                   pe.setTipo2(EnumeradoTipos.NULL);
+                   this.setTipo2(EnumeradoTipos.NULL);
                    }
             this.setFotoPokemon(rs.getString("IMAGEN"));
             this.setNivel(1);
@@ -408,26 +417,25 @@ public class ClasePokemon {
             this.setDefensaEspecial(rnd.nextInt(30)+20);
             this.setVelocidad(rnd.nextInt(30)+20);
             this.setEstamina(rnd.nextInt(30)+20);
-              
-            System.out.println(resultado);
             System.out.println(this.toString());
         }
         statement.close();
     }
 
-    public void insertarPokemon(Connection conec, ClasePokemon p) throws SQLException {
-		String sentencia ="INSERT INTO POKEMON_ENTRENADOR(ID_POKEMON,ID_ENTRENADOR, NUM_POKEDEX, MOTE, VITALIDAD, ATAQUE, DEFENSA, ATAQUE_ESPECIAL, DEFENSA_ESP, ESTAMINA, VELOCIDAD, NIVEL, FERTILIDAD, EQUIPO) VALUES("
-                            + p.getIdPokemon()
+    public void insertarPokemon(Connection conec) throws SQLException {
+		String sentencia ="INSERT INTO POKEMON_ENTRENADOR(ID_POKEMON,ID_ENTRENADOR, NUM_POKEDEX, MOTE, VITALIDAD, ATAQUE, DEFENSA, ATAQUE_ESP, DEFENSA_ESP, ESTAMINA, VELOCIDAD, NIVEL, FERTILIDAD,EXPERIENCIA, EQUIPO) VALUES("
+                            + this.getIdPokemon()
                             +",1"
-                            +","+p.getNumPokedex()
+                            +","+this.getNumPokedex()
                             +",NULL"
-                            +","+p.getVitalidad()
-                            +","+p.getAtaque()
-                            +","+p.getDefensa()
-                            +","+p.getAtaqueEspecial()
-                            +","+p.getDefensaEspecial()
-                            +","+p.getEstamina()
-                            +","+p.getVelocidad()
+                            +","+this.getVitalidad()
+                            +","+this.getAtaque()
+                            +","+this.getDefensa()
+                            +","+this.getAtaqueEspecial()
+                            +","+this.getDefensaEspecial()
+                            +","+this.getEstamina()
+                            +","+this.getVelocidad()
+                            +",DEFAULT"
                             +",DEFAULT"
                             +",DEFAULT"
                             +",2"
