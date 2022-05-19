@@ -86,23 +86,27 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
-            <ImageView layoutX="-10.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView layoutX="-5.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../img/menuCapturar.png" />
                </image>
             </ImageView>
-            <Button fx:id="btnGenerarPokemon" layoutX="815.0" layoutY="478.0" mnemonicParsing="false" onAction="#GenerarPokemon" prefHeight="41.0" prefWidth="178.0" text="Capturar otro Pokemon">
+            <Button fx:id="btnGenerarPokemon" layoutX="1610.0" layoutY="878.0" mnemonicParsing="false" onAction="#GenerarPokemon" prefHeight="41.0" prefWidth="178.0" text="Generar Pokemon">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btnLanzarPokeball" layoutX="815.0" layoutY="419.0" mnemonicParsing="false" onAction="#LanzarPokeball" prefHeight="41.0" prefWidth="178.0" text="Lanzar Pokeball">
+            <Button fx:id="btnLanzarPokeball" layoutX="1610.0" layoutY="939.0" mnemonicParsing="false" onAction="#LanzarPokeball" prefHeight="41.0" prefWidth="178.0" text="Lanzar Pokeball">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <ImageView fx:id="imgPokemon" fitHeight="150.0" fitWidth="200.0" layoutX="415.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="imgPokeball" fitHeight="150.0" fitWidth="200.0" layoutX="420.0" layoutY="375.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgPokemon" fitHeight="262.0" fitWidth="380.0" layoutX="768.0" layoutY="413.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="btnVolverInicio" layoutX="1610.0" layoutY="1000.0" mnemonicParsing="false" onAction="#VolverInicio" prefHeight="41.0" prefWidth="178.0" text="Volver Inicio">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
          </children>
     </AnchorPane>
   </children>
