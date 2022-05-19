@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -27,7 +28,7 @@ public class InterCapturar implements Initializable{
     private Button btnVolverInicio;
 
     @FXML
-    private Image imgPokemon;
+    private ImageView imgPokemon;
 
 
     @FXML
