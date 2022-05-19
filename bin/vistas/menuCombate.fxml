@@ -102,7 +102,7 @@
             <Text fx:id="textMiNivel" layoutX="614.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" />
             <Text fx:id="textNombrePo" layoutX="480.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nombrePokemon" wrappingWidth="106.810546875" />
             <Text fx:id="textMiVidalActual" layoutX="564.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1000" />
-            <Text fx:id="textMiVidaMáx" layoutX="611.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1000" />
+            <Text fx:id="textMiVidaMax" layoutX="611.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1000" />
             <Text fx:id="textVidaActualRi" layoutX="89.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1000" />
             <Text fx:id="textVidaMaxRi" layoutX="136.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1000" />
             <ImageView fx:id="imgMiPokemon" fitHeight="150.0" fitWidth="200.0" layoutX="81.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true" />
