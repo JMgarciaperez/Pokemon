@@ -365,8 +365,11 @@ public class ClasePokemon {
         if(resultado ==2 || resultado ==3){ 
             try {
                 System.out.println("El pokemon ha sido capturado");
+                
                 cogerMayorIdPokemon(conec);
                 insertarPokemon(conec);
+                System.out.println(this.toString());
+                
             } catch (Exception e) {
 
             }

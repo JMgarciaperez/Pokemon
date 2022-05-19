@@ -37,6 +37,7 @@ public class InterCapturar implements Initializable{
     @FXML
     private ImageView imgPokemon;
 
+    ClasePokemon pe = new ClasePokemon();
 
     @FXML
     public void generarPokemon(ActionEvent event){
@@ -53,7 +54,6 @@ public class InterCapturar implements Initializable{
  
             System.out.println("Conexión establecida");
             
-            ClasePokemon pe = new ClasePokemon();
             pe.mostrarPokemon(conec);
 
             String ruta="../imgPo/"+pe.getFotoPokemon();
@@ -90,7 +90,6 @@ public class InterCapturar implements Initializable{
  
             System.out.println("Conexión establecida");
 
-            ClasePokemon pe = new ClasePokemon();
             pe.probabilidadCaptura(conec);
             
             try{
