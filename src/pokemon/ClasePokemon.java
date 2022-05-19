@@ -393,7 +393,7 @@ public class ClasePokemon {
             this.setNumPokedex(rs.getInt("NUM_POKEDEX"));
             this.setNombre(rs.getString("NOMBRE"));
             this.setTipo1(EnumeradoTipos.valueOf(rs.getString("TIPO_1")));
-            if (rs.getObject("TIPO2") != null){
+            if (rs.getObject("TIPO_2") != null){
 
                 pe.setTipo2(EnumeradoTipos.valueOf(rs.getString("TIPO_2")));
                    } else{
