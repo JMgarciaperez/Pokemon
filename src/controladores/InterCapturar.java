@@ -1,6 +1,9 @@
 package controladores;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -49,7 +53,14 @@ public class InterCapturar implements Initializable{
  
             System.out.println("Conexión establecida");
             
-            ClasePokemon.mostrarPokemon(conec);
+            ClasePokemon pe = new ClasePokemon();
+            pe.mostrarPokemon(conec);
+
+            //File img=new File("../../imgPo/IVISAUR.png");
+            //InputStream isImage =(InputStream) new FileInputStream(img);
+            String ruta="../imgPo/"+pe.getFotoPokemon() + ".png";
+            Image im=new Image(getClass().getResourceAsStream(ruta));
+            imgPokemon.setImage(im);
             
             try{
                 conec.close();
@@ -68,7 +79,6 @@ public class InterCapturar implements Initializable{
 
     @FXML
     public void lanzarPokeball(ActionEvent event){
-
 
     }
 

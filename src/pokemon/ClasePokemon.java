@@ -365,7 +365,7 @@ public class ClasePokemon {
         }
     }
 
-    public static void cogerMayorIdPokemon(Connection con) throws SQLException {	
+    public void cogerMayorIdPokemon(Connection con) throws SQLException {	
         String consulta = "SELECT MAX(ID_POKEMON) FROM POKEMON_ENTRENADOR AS ID_POKEMON";
         Statement statement = con.createStatement();
         ResultSet rs = statement.executeQuery(consulta);
@@ -379,7 +379,7 @@ public class ClasePokemon {
         statement.close();
     }
 
-    public static void mostrarPokemon(Connection conec) throws SQLException {
+    public  void mostrarPokemon(Connection conec) throws SQLException {
         Random rnd = new Random();
 
         int resultado = (rnd.nextInt(34) + 1);
@@ -388,30 +388,34 @@ public class ClasePokemon {
         Statement statement = conec.createStatement();
         ResultSet rs = statement.executeQuery(consulta);
 
-        ClasePokemon e = null;
+        ClasePokemon pe= null;
         while (rs.next()) {
-            e = new ClasePokemon();
-            e.setNumPokedex(rs.getInt("NUM_POKEDEX"));
-            e.setNombre(rs.getString("NOMBRE"));
-            e.setTipo1(EnumeradoTipos.valueOf(rs.getString("TIPO_1")));
-            e.setTipo2(EnumeradoTipos.valueOf(rs.getString("TIPO_2")));
-            e.setFotoPokemon(rs.getString("IMAGEN"));
-            e.setNivel(1);
-            e.setVitalidad(rnd.nextInt(30)+20);
-            e.setAtaque(rnd.nextInt(30)+20);
-            e.setDefensa(rnd.nextInt(30)+20);
-            e.setAtaqueEspecial(rnd.nextInt(30)+20);
-            e.setDefensaEspecial(rnd.nextInt(30)+20);
-            e.setVelocidad(rnd.nextInt(30)+20);
-            e.setEstamina(rnd.nextInt(30)+20);
+            this.setNumPokedex(rs.getInt("NUM_POKEDEX"));
+            this.setNombre(rs.getString("NOMBRE"));
+            this.setTipo1(EnumeradoTipos.valueOf(rs.getString("TIPO_1")));
+            if (rs.getObject("TIPO2") != null){
+
+                pe.setTipo2(EnumeradoTipos.valueOf(rs.getString("TIPO_2")));
+                   } else{
+                   pe.setTipo2(EnumeradoTipos.NULL);
+                   }
+            this.setFotoPokemon(rs.getString("IMAGEN"));
+            this.setNivel(1);
+            this.setVitalidad(rnd.nextInt(30)+20);
+            this.setAtaque(rnd.nextInt(30)+20);
+            this.setDefensa(rnd.nextInt(30)+20);
+            this.setAtaqueEspecial(rnd.nextInt(30)+20);
+            this.setDefensaEspecial(rnd.nextInt(30)+20);
+            this.setVelocidad(rnd.nextInt(30)+20);
+            this.setEstamina(rnd.nextInt(30)+20);
               
             System.out.println(resultado);
-            System.out.println(e.toString());
+            System.out.println(this.toString());
         }
         statement.close();
     }
 
-    public static void insertarPokemon(Connection conec, ClasePokemon p) throws SQLException {
+    public void insertarPokemon(Connection conec, ClasePokemon p) throws SQLException {
 		String sentencia ="INSERT INTO POKEMON_ENTRENADOR(ID_POKEMON,ID_ENTRENADOR, NUM_POKEDEX, MOTE, VITALIDAD, ATAQUE, DEFENSA, ATAQUE_ESPECIAL, DEFENSA_ESP, ESTAMINA, VELOCIDAD, NIVEL, FERTILIDAD, EQUIPO) VALUES("
                             + p.getIdPokemon()
                             +",1"
