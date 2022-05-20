@@ -96,7 +96,7 @@ public class InterCapturar implements Initializable{
 
             pe.probabilidadCaptura(conec);
 
-            if (pe.getValorCaptura() == 2){
+            if (pe.getValorCaptura() == 2 || pe.getValorCaptura() == 3){
 
                 lblCaptura.setText("El pokemon ha sido capturado");
             }else{

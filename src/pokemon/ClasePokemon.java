@@ -4,33 +4,11 @@ import java.io.IOException;
 import java.sql.*;
 import javax.sql.*;
 
-import javafx.scene.text.TextFlow;
-
 import java.util.ArrayList;
 import java.util.Random;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.text.TextFlow;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import pokemon.ClasePokemon;
 
 public class ClasePokemon {
@@ -400,7 +378,7 @@ public class ClasePokemon {
         setValorCaptura(rnd.nextInt(3) + 1);
 
         
-        if(valorCaptura ==2 || valorCaptura ==3){ 
+        if(valorCaptura == 2 || valorCaptura == 3){ 
             try {
                 System.out.println("El pokemon ha sido capturado");
                 cogerMayorIdPokemon(conec);
