@@ -108,7 +108,7 @@
                </font>
             </Button>
             <ImageView fx:id="imgPokemon" fitHeight="439.0" fitWidth="567.0" layoutX="700.0" layoutY="257.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="lblCaptura" layoutX="802.0" layoutY="888.0" prefHeight="92.0" prefWidth="663.0" text="Captura">
+            <Label fx:id="lblCaptura" layoutX="723.0" layoutY="677.0" prefHeight="92.0" prefWidth="663.0" textFill="#ff00df">
                <font>
                   <Font size="36.0" />
                </font>
