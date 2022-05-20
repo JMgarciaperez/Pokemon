@@ -459,7 +459,7 @@ public class ClasePokemon {
         
         if(valorCaptura == 2 || valorCaptura == 3){ 
             try {
-                System.out.println("El pokemon ha sido capturado");
+
                 cogerMayorIdPokemon(conec);
                 insertarPokemon(conec);
                 System.out.println(this.toString());
@@ -469,7 +469,7 @@ public class ClasePokemon {
             }
         
         }else{
-        System.out.println("No has capturado el pokemon");
+        
         }
     }
 
@@ -523,8 +523,7 @@ public class ClasePokemon {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			stmt.close(); // Puede lanzar SQLExceptions, por eso he puesto el
-			// throws en la cabecera del metodo
+			stmt.close();
 		}									   
 	}
 
