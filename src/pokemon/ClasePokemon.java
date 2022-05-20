@@ -427,10 +427,10 @@ public class ClasePokemon {
             this.setTipo1(EnumeradoTipos.valueOf(rs.getString("TIPO_1")));
             if (rs.getObject("TIPO_2") != null){
 
-                this.setTipo2(EnumeradoTipos.valueOf(rs.getString("TIPO_2")));
-                   } else{
-                   this.setTipo2(EnumeradoTipos.NULL);
-                   }
+            this.setTipo2(EnumeradoTipos.valueOf(rs.getString("TIPO_2")));
+            } else{
+            this.setTipo2(EnumeradoTipos.NULL);
+            }
             this.setFotoPokemon(rs.getString("IMAGEN"));
             this.setNivel(1);
             this.setVitalidad(rnd.nextInt(30)+20);
@@ -548,5 +548,5 @@ public class ClasePokemon {
             ", fotoPokemon='" + getFotoPokemon() + "'" +
             ", ColeccionMov='" + getColeccionMov() + "'" +
             "}";
-    } 
+    }
 }
