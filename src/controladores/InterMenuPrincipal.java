@@ -20,6 +20,8 @@ public class InterMenuPrincipal implements Initializable {
     @FXML
     private Button btnStart;
 
+    private Stage stage;
+
     @FXML
     private void empezarPartida(ActionEvent event) throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/menuElegir.FXML"));
@@ -29,8 +31,8 @@ public class InterMenuPrincipal implements Initializable {
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
-        stage.showAndWait();
-        stage.close();
+        stage.show();
+        this.stage.close();
     }
 
     @Override
@@ -38,4 +40,7 @@ public class InterMenuPrincipal implements Initializable {
         
     }
     
+    public void show(){
+        stage.show();
+    }
 }
