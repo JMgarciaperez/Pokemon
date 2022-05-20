@@ -2,15 +2,26 @@ package pokemon;
 
 import java.util.Random;
 
-public class Entrenador {
+/**
+ * La clase entrenador contiene el nombre,las pokemonedas y los pokemones que tiene 
+ * en su equipo y en la caja.
+ * @author Jose Maria y Jose Andres.
+ */
 
+public class Entrenador {
 
     private String nombre;
     private int pokeMonedas;
     private ClasePokemon[] equipoPokemon; 
     protected ClasePokemon[] equipoCaja;
 
-
+/**
+ * Constructor con todos su parametros
+ * @param nombre
+ * @param pokeMonedas
+ * @param equipoPokemon
+ * @param equipoCaja
+ */
   public Entrenador(String nombre, int pokeMonedas, ClasePokemon[] equipoPokemon, ClasePokemon[] equipoCaja) {
       super();
         this.nombre = nombre;
@@ -48,7 +59,10 @@ public class Entrenador {
     public void setPokeMonedas(int pokeMonedas) {
         this.pokeMonedas = pokeMonedas;
     }
-
+/**
+ * Método que moverá los pokemones al Equipo Principal
+ * @param pokemon cogeremos la id del pokemon
+ */
     public void moverPokemonEquipoPokemon(ClasePokemon pokemon){
         if(equipoCaja.length > 1){
             ClasePokemon pok;
@@ -71,7 +85,10 @@ public class Entrenador {
         }
     }
 
-
+/**
+ * Método que movera los pokemones a la caja
+ * @param pokemon cogeremos la id del pokemon
+ */
     public void moverPokemonCaja(ClasePokemon pokemon){
         
         if(equipoPokemon.length > 1){
@@ -95,10 +112,6 @@ public class Entrenador {
         }
     }
 
-    public boolean capturarPokemon(){
-     
-        return false;
-    }
 
     @Override
     public String toString() {
@@ -107,6 +120,4 @@ public class Entrenador {
             ", pokeMonedas='" + getPokeMonedas() + "'" +
             "}";
     }
-
-    
 }

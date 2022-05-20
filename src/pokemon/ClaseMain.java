@@ -15,10 +15,6 @@ public class ClaseMain extends Application{
     
     public static void main(String[] args) {
         launch(args);
-    
-        
-
-        /*
 
         Combate c = new Combate();
 
@@ -28,8 +24,6 @@ public class ClaseMain extends Application{
 
         c.addTurnos(t1);
         c.escribirFichero();
-
-        */
 
     }
 
@@ -47,6 +41,4 @@ public class ClaseMain extends Application{
             }
             
         }
-
-    //ClasePokemon.generarPokemonAleatorio(nombre);
 }

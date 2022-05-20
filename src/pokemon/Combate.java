@@ -9,13 +9,11 @@ import java.util.List;
 
 public class Combate {
 
-
         protected String nombreRival;
         protected int koEntrenador;
         protected int koRival;
         protected List<Turno> turnos;
         public static final String PATH = "./log/combate.log";
-
 
     public Combate(String nombreRival, int koEntrenador, int koRival) {
         super();
@@ -107,5 +105,4 @@ public class Combate {
         
         return false;
     }
-
 }

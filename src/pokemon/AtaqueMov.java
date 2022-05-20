@@ -6,7 +6,6 @@ public class AtaqueMov extends Movimientos{
         super();
     }
 
-
     @Override
     public void consumoEstamina(ClasePokemon pokemon) {
         pokemon.setEstamina(pokemon.getEstamina() - this.estaminaMov);

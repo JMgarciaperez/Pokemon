@@ -9,7 +9,13 @@ import java.util.Random;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import pokemon.ClasePokemon;
+
+/**
+ * La clase pokemones es donde tenemos todos los atributos de un pokemon, sus respetivas funcionalidades 
+ * y métodos que se conectaran con la base de datos.
+ * 
+ * @author Jose Maria y Jose Andres
+ */
 
 public class ClasePokemon {
 
@@ -32,17 +38,13 @@ public class ClasePokemon {
     private ArrayList<Movimientos> ColeccionMov;
     private int valorCaptura;
 
-    // private static ArrayList<String> nombresPokemon = new ArrayList<>();
-
-
     private static final double VENTAJA = 2;
     private static final double DESVENTAJA = 0.5;
     private static final double NEUTRO = 1;
-    
-    // TODO: Esto se hace en un main o fuera de la clase
-    // ClasePokemon pokemonEntrenador = new ClasePokemon();
-    // ClasePokemon pokemonRival = new ClasePokemon();
 
+    /**
+     * Contructor por defecto
+     */
     public ClasePokemon(){
         super();
         this.idPokemon = 0;
@@ -62,14 +64,36 @@ public class ClasePokemon {
         this.tipo2 = EnumeradoTipos.NORMAL;
         this.fotoPokemon = "";
         this.ColeccionMov = new ArrayList<Movimientos>();
+        this.valorCaptura = 0;
 
     }
 
+    /**
+     * Constructor con todos los parámetros
+     * 
+     * @param idPokemon
+     * @param numPokedex
+     * @param nombre
+     * @param mote
+     * @param vitalidad
+     * @param ataque
+     * @param defensa
+     * @param ataqueEspecial
+     * @param defensaEspecial
+     * @param velocidad
+     * @param estamina
+     * @param nivel
+     * @param experiencia
+     * @param tipo1
+     * @param tipo2
+     * @param fotoPokemon
+     * @param ColeccionMov
+     * @param valorCaptura
+     */
     
-    
-    public ClasePokemon(int idPokemon, int numPokedex, String nombre, String mote, int vitalidad, int ataque, int defensa, int ataqueEspecial, 
-                        int defensaEspecial, float velocidad, int estamina, int nivel, double experiencia , 
-                        EnumeradoTipos tipo1, EnumeradoTipos tipo2,String fotoPokemon, ArrayList<Movimientos> ColeccionMov) {
+    public ClasePokemon(int idPokemon, int numPokedex, String nombre, String mote, int vitalidad, int ataque, int defensa,
+                        int ataqueEspecial, int defensaEspecial, float velocidad, int estamina, int nivel, double experiencia , 
+                        EnumeradoTipos tipo1, EnumeradoTipos tipo2,String fotoPokemon, ArrayList<Movimientos> ColeccionMov, int valorCaptura) {
         super();
         this.idPokemon = idPokemon;
         this.numPokedex = numPokedex;
@@ -88,28 +112,9 @@ public class ClasePokemon {
         this.tipo2 = tipo2;
         this.fotoPokemon = fotoPokemon;
         this.ColeccionMov = ColeccionMov;
+        this.valorCaptura = valorCaptura;
     }
 
-    public ClasePokemon(ClasePokemon cp){
-        super();
-        this.idPokemon = cp.idPokemon;
-        this.numPokedex = cp.numPokedex;
-        this.nombre = cp.nombre;
-        this.mote = cp.mote;
-        this.vitalidad = cp.vitalidad;
-        this.ataque = cp.ataque;
-        this.defensa = cp.defensa;
-        this.ataqueEspecial = cp.ataqueEspecial;
-        this.defensaEspecial = cp.defensaEspecial;
-        this.velocidad = cp.velocidad;
-        this.estamina = cp.estamina;
-        this.nivel = cp.nivel;
-        this.experiencia = cp.experiencia;
-        this.tipo1 = cp.tipo1;
-        this.tipo2 = cp.tipo2;
-        this.fotoPokemon = cp.fotoPokemon;
-        this.ColeccionMov = cp.ColeccionMov;
-    }
 
     public int getIdPokemon() {
         return this.idPokemon;
@@ -254,12 +259,22 @@ public class ClasePokemon {
     public void setValorCaptura(int valorCaptura) {
         this.valorCaptura = valorCaptura;
     }
+
+   /**
+    * Método que nos devuelve una experiencia tras ganar un combate
+    * @param pokemonEntrenador cogera la vitalidad del pokemonEntrenador
+    * @param pokemonRival cogera la vitalidad del pokemonRival
+    */ 
     public void experienciaTrasCombate(ClasePokemon pokemonEntrenador ,ClasePokemon pokemonRival){
 
         if ((pokemonEntrenador.vitalidad>0)&&(pokemonRival.vitalidad==0))
         pokemonEntrenador.setExperiencia( pokemonEntrenador.getExperiencia()+((pokemonEntrenador.nivel + pokemonRival.nivel)*10)/4);
     }
 
+    /**
+     * Método que calcula dependiendo de la experiencia de tu pokemon y su nivel si debe subir o no de nivel.
+     * @return
+     */
     public boolean subirNivel() {
         boolean resultado=false;
         if(this.experiencia >= (10*nivel)){
@@ -274,12 +289,19 @@ public class ClasePokemon {
         }
         return false;
     }
-
+    
     public boolean descansar() {
 
         return false;
     }
 
+
+    /**
+     * Método que compara dos tipos de pokemon y te dice si un tipo tiene ventaja, desventaja o es neutro contra el otro.
+     * @param tip1
+     * @param tip2
+     * @return
+     */
     public double ventajaDesventaja(EnumeradoTipos tip1, EnumeradoTipos tip2) {
     
         if(tip1 == EnumeradoTipos.AGUA && tip2 == EnumeradoTipos.FUEGO || tip2 == EnumeradoTipos.TIERRA){
@@ -328,6 +350,13 @@ public class ClasePokemon {
         return NEUTRO;
     }
 
+    /**
+     * Método que calcula la potencia total del pokemon sumando el ataque, la potencia del movimiento ,restandole la defensa del rival
+     * y multiplicando si tiene ventaja, desventaja o neutro.
+     * @param movimientoUsar
+     * @param pokemonRival
+     * @return
+     */
     public double potenciaTotal(Movimientos movimientoUsar, ClasePokemon pokemonRival){
         double potenciaTotal = 0;
         if(movimientoUsar.tipo == EnumeradoTipos.NORMAL){
@@ -343,6 +372,12 @@ public class ClasePokemon {
         return potenciaTotal;
     }
 
+    /**
+     * Método que calcula que pokemon tiene mas velocidad y empieza el combate el que mas velocidad tenga.
+     * @param pokemonEntrenador
+     * @param pokemonRival
+     * @param movimientoUsar
+     */
     public void ataqueMovimientos(ClasePokemon pokemonEntrenador, ClasePokemon pokemonRival, Movimientos movimientoUsar){
         if (pokemonEntrenador.velocidad >= pokemonRival.velocidad){
             
@@ -360,6 +395,10 @@ public class ClasePokemon {
 
     }
 
+    /**
+     * Método que calcula la vida del rival y si es menor a 0 la iguala a 0.
+     * @param cantidad
+     */
     public void actualizarVida(double cantidad) {
         this.vitalidad -= cantidad;
         if (this.vitalidad < 0) {
@@ -367,46 +406,12 @@ public class ClasePokemon {
         }
     }
     
-    //public static void inicializarListaNombres(ArrayList<String> paramNombresPokemon){
-    //  nombresPokemon = paramNombresPokemon;
-    //}
-
-    public void probabilidadCaptura(Connection conec) throws SQLException{
-        Random rnd = new Random();
-
-        
-        setValorCaptura(rnd.nextInt(3) + 1);
-
-        
-        if(valorCaptura == 2 || valorCaptura == 3){ 
-            try {
-                System.out.println("El pokemon ha sido capturado");
-                cogerMayorIdPokemon(conec);
-                insertarPokemon(conec);
-                System.out.println(this.toString());
-                
-            } catch (Exception e) {
-            
-            }
-        
-        }else{
-        System.out.println("No has capturado el pokemon");
-        }
-    }
-
-    public void cogerMayorIdPokemon(Connection conec) throws SQLException {	
-        String consulta = "SELECT MAX(ID_POKEMON) FROM POKEMON_ENTRENADOR AS ID_POKEMON";
-        Statement statement = conec.createStatement();
-        ResultSet rs = statement.executeQuery(consulta);
-
-        while (rs.next()) {
-        
-            this.setIdPokemon(rs.getInt(1)+ 1);
-
-        }
-        statement.close();
-    }
-
+    /**
+     * Método para coger un pokemon aleatorio de la base de datos y darle valores 
+     * aleatorios a sus atributos
+     * @param conec
+     * @throws SQLException
+     */
     public  void mostrarPokemon(Connection conec) throws SQLException {
         Random rnd = new Random();
 
@@ -440,6 +445,58 @@ public class ClasePokemon {
         statement.close();
     }
 
+    /**
+     * Método que calcula la probabilidad de capturar un pokemon.
+     * @param conec
+     * @throws SQLException
+     */
+    public void probabilidadCaptura(Connection conec) throws SQLException{
+        Random rnd = new Random();
+
+        
+        setValorCaptura(rnd.nextInt(3) + 1);
+
+        
+        if(valorCaptura == 2 || valorCaptura == 3){ 
+            try {
+                System.out.println("El pokemon ha sido capturado");
+                cogerMayorIdPokemon(conec);
+                insertarPokemon(conec);
+                System.out.println(this.toString());
+                
+            } catch (Exception e) {
+            
+            }
+        
+        }else{
+        System.out.println("No has capturado el pokemon");
+        }
+    }
+
+    /**
+     * Método para coger la Id_Pokemon más alta de la base de datos y sumarle 1 
+     * @param conec
+     * @throws SQLException
+     */
+    public void cogerMayorIdPokemon(Connection conec) throws SQLException {	
+        String consulta = "SELECT MAX(ID_POKEMON) FROM POKEMON_ENTRENADOR AS ID_POKEMON";
+        Statement statement = conec.createStatement();
+        ResultSet rs = statement.executeQuery(consulta);
+
+        while (rs.next()) {
+        
+            this.setIdPokemon(rs.getInt(1)+ 1);
+
+        }
+        statement.close();
+    }
+    
+    /**
+     * Método para insertar el pokemon capturado en la base de datos 
+     * con sus atributos generados anteriormente
+     * @param conec
+     * @throws SQLException
+     */
     public void insertarPokemon(Connection conec) throws SQLException {
 		String sentencia ="INSERT INTO POKEMON_ENTRENADOR(ID_POKEMON,ID_ENTRENADOR, NUM_POKEDEX, MOTE, VITALIDAD, ATAQUE, DEFENSA, ATAQUE_ESP, DEFENSA_ESP, ESTAMINA, VELOCIDAD, NIVEL, FERTILIDAD,EXPERIENCIA, EQUIPO) VALUES("
                             + this.getIdPokemon()
@@ -468,8 +525,7 @@ public class ClasePokemon {
 		} finally {
 			stmt.close(); // Puede lanzar SQLExceptions, por eso he puesto el
 			// throws en la cabecera del metodo
-		}
-													   
+		}									   
 	}
 
     @Override
