@@ -17,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
@@ -36,6 +37,9 @@ public class InterCapturar implements Initializable{
 
     @FXML
     private ImageView imgPokemon;
+
+    @FXML
+    private Label lblCaptura;
 
     ClasePokemon pe = new ClasePokemon();
 
@@ -91,7 +95,13 @@ public class InterCapturar implements Initializable{
             System.out.println("Conexión establecida");
 
             pe.probabilidadCaptura(conec);
-            
+
+            if (pe.getValorCaptura() == 2){
+
+                lblCaptura.setText("El pokemon ha sido capturado");
+            }else{
+                lblCaptura.setText("El pokemon no se ha capturado");
+            }
             try{
                 conec.close();
                 System.out.println("Conexión cerrada");
@@ -105,6 +115,11 @@ public class InterCapturar implements Initializable{
             e.printStackTrace();
         }
 
+    }
+
+    @FXML
+    public void capturado(ActionEvent event){
+        
     }
 
     @FXML

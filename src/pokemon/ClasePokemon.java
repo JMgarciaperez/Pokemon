@@ -3,8 +3,35 @@ package pokemon;
 import java.io.IOException;
 import java.sql.*;
 import javax.sql.*;
+
+import javafx.scene.text.TextFlow;
+
 import java.util.ArrayList;
 import java.util.Random;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.text.TextFlow;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import pokemon.ClasePokemon;
 
 public class ClasePokemon {
 
@@ -25,6 +52,8 @@ public class ClasePokemon {
     private EnumeradoTipos tipo2;
     private String fotoPokemon;
     private ArrayList<Movimientos> ColeccionMov;
+    private int valorCaptura;
+
     // private static ArrayList<String> nombresPokemon = new ArrayList<>();
 
 
@@ -240,6 +269,13 @@ public class ClasePokemon {
         this.fotoPokemon = fotoPokemon;
     }
 
+    public int getValorCaptura() {
+        return this.valorCaptura;
+    }
+
+    public void setValorCaptura(int valorCaptura) {
+        this.valorCaptura = valorCaptura;
+    }
     public void experienciaTrasCombate(ClasePokemon pokemonEntrenador ,ClasePokemon pokemonRival){
 
         if ((pokemonEntrenador.vitalidad>0)&&(pokemonRival.vitalidad==0))
@@ -360,20 +396,21 @@ public class ClasePokemon {
     public void probabilidadCaptura(Connection conec) throws SQLException{
         Random rnd = new Random();
 
-        int resultado = 0;
-        resultado = resultado + (rnd.nextInt(3) + 1);
-        if(resultado ==2 || resultado ==3){ 
+        
+        setValorCaptura(rnd.nextInt(3) + 1);
+
+        
+        if(valorCaptura ==2 || valorCaptura ==3){ 
             try {
                 System.out.println("El pokemon ha sido capturado");
-                
                 cogerMayorIdPokemon(conec);
                 insertarPokemon(conec);
                 System.out.println(this.toString());
                 
             } catch (Exception e) {
-
-            }
             
+            }
+        
         }else{
         System.out.println("No has capturado el pokemon");
         }
